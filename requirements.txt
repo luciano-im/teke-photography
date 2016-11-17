@@ -1,0 +1,7 @@
+Django==1.9.11
+django-el-pagination==3.0.1
+django-filebrowser==3.7.2
+django-grappelli==2.8.2
+django-taggit==0.21.3
+Pillow==3.4.2
+sorl-thumbnail==12.3

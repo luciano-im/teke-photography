@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>
+		{% block title %}elpibedelacamara - Diego Muñoz Photographer{% endblock %}
+	</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="{% static "css/normalize.css" %}">
+	<link rel="stylesheet" href="{% static "css/styles.css" %}">
+	{% block head %}{% endblock %}
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<div>
+				<img src="{% static "img/logo.png" %}" alt="elpibedelacamara - Diego Muñoz Photographer" class="camera"><!--
+				--><img src="{% static "img/teke.jpg" %}" alt="Hola, soy Diego Muñoz!" class="teke">
+			</div>
+			<h1>DIEGO MUÑOZ</h1>
+			<h2>elpibedelacamara</h2>
+			<span>PHOTOGRAPHER</span>
+		</div>
+		<nav>
+			<ul>
+				<li {% if whereIAm == "" %}class="active"{% endif %}><a href="/">HOME <i class="icon-long-arrow-right"></i></a></li>
+				<li {% if whereIAm == "portfolio" %}class="active"{% endif %}><a href="/portfolio">PORTFOLIO <i class="icon-long-arrow-right"></i></a></li>
+				<li {% if whereIAm == "setup" %}class="active"{% endif %}><a href="/setup">SETUP <i class="icon-long-arrow-right"></i></a></li>
+				<li {% if whereIAm == "contact" %}class="active"{% endif %}><a href="/contact">CONTACTO <i class="icon-long-arrow-right"></i></a></li>
+			</ul>
+		</nav>
+		<div class="description">
+			<p>Hola, soy Diego y quiero mostrarte, a traves de mis fotos, el mundo tal como lo veo yo.</p>
+			<p>Seguime en Instagram <a href="http://www.instagram.com/elpibedelacamara" class="orange-link-dashed">@elpibedelacamara</a>.</p>
+		</div>
+		<div class="social">
+			<ul class="h-list">
+				<li class="orange-link-dashed"><a href="http://www.instagram.com/elpibedelacamara"><i class="icon-instagram"></i></a></li>
+				<li class="orange-link-dashed"><a href="#"><i class="icon-facebook-square"></i></a></li>
+			</ul>
+		</div>
+	</header>
+	{% block content %}{% endblock %}
+	{% block scriptjs %}{% endblock %}
+</body>
+</html>

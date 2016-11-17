@@ -87,3 +87,13 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# OSX
+.DS_Store
+
+# SQLite
+.sqlite3
+
+# Other
+pendientes.txt
+secret_key.txt

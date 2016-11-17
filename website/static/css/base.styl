@@ -1,0 +1,46 @@
+body, html
+	margin 0
+	padding 0
+
+body
+	//max-width 1280px
+	min-width 320px
+
+html
+	box-sizing border-box
+	color $fontColor
+	font-family $textFont
+	font-size unit($fontSize, 'px')
+
+*
+:before
+:after
+	// box-sizing se define en el html, y se hereda en el resto de elementos.
+	// http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+	box-sizing inherit
+
+a
+	text-decoration none
+
+h1, h2, h3, h4, h5, h6
+	margin 0
+
+p
+	margin 0
+
+ul
+	margin 0
+	padding 0
+	li
+		list-style none
+
+header
+	column(1/5, gutter: 0)
+	padding .5em 1em
+
+section
+	column(4/5, gutter: 0)
+
+//Masonry
+.grid-sizer, .grid-item
+	width 25%

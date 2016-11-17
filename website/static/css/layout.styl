@@ -1,0 +1,150 @@
+/*#### SIDEBAR ################################################################*/
+
+header
+	.description
+		font-size .8em
+		margin 3em 0 1.5em 0
+		text-align center
+
+	.logo
+		color $fontColor
+		text-align center
+		div
+			margin 10px 0
+			img
+				margin 0
+				position relative
+			//z-index 2 para posicionar sobre la foto de Diego
+			.camera
+				transition all 1s ease
+				z-index 2
+				&:hover
+					opacity 0
+					transform rotate(360deg)
+					+.teke
+						opacity 1
+			//z-index 1 para dejar la foto debajo del logo y uso margen izquierdo negativo para posicionarla
+			.teke
+				border-radius 50%
+				margin-left -130px
+				opacity 0
+				transition opacity .5s ease
+				width 130px
+				z-index 1
+		h2
+			//color $orangeColor
+			font-size 1.06em
+			margin .2em 0 .5em 0
+		span
+			border-top 1px solid $fontColor
+			font-size 1em
+
+	.social
+		font-size 1.5em
+		text-align center
+		li
+			margin .5em
+			a
+				color $orangeColor
+				display block
+				transition transform .5s ease
+				&:hover
+					transform translateY(-.2em)
+
+nav
+	margin 1.5em 0
+	ul
+		padding 0 1em
+	li
+		border-bottom 1px dashed $linkColor
+		margin .5em 0
+		&:hover,
+		&.active
+			a
+				color black
+				.icon-long-arrow-right
+					opacity 1
+		a
+			color $linkColor
+			display block
+			font-size 1.2em
+			padding .3em 0 .5em
+			.icon-long-arrow-right
+				color $orangeColor
+				opacity 0
+
+
+/*#### HOME ################################################################*/
+
+.home
+	figure
+		background-color black
+		display inline-block
+		margin 0
+		position relative
+		&:hover
+			a:after
+				opacity .7
+		a
+			display block
+			img
+				height auto
+				vertical-align middle
+				transition all .3s ease-in-out
+				width 100%
+				//-webkit-backface-visibility: hidden;
+			&:after
+				//background $orangeColor
+				background #000
+				bottom 0
+				content ''
+				left 0
+				opacity 0
+				position absolute
+				right 0
+				top 0
+				transition all .3s ease-in-out
+				z-index 1
+
+/*#### SETUP ################################################################*/
+
+.setup
+	text-align center
+	img
+		display inline-block
+		height auto
+		margin .5em 0
+		width 45%
+	.description
+		padding 1em
+		text-align left
+		ul
+			border-left 4px solid grey
+			margin 2em 0 1em 1em
+			padding-left 1em
+			li
+				color grey
+				font-style italic
+				list-style disc
+				margin-left 1em
+
+/*#### TAGS ################################################################*/
+
+.tags
+	// background-color $orangeColor
+	ul
+		border-bottom 2px solid $orangeColor
+		padding .5em
+		li
+			margin 0 .3em
+			a
+				color $fontColor
+				display block
+				font-size .7em
+				padding .5em 1em
+				text-transform uppercase
+				&.selected
+					border 1px solid $orangeColor
+					color $orangeColor
+				&:not(.selected):hover
+					border-bottom 1px dashed $orangeColor

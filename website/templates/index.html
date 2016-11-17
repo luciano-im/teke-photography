@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+<script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
+<script src="{% static "js/js.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+<section class="home grid">
+	<div class="tags stamp">
+		<ul class="h-list">
+		<li><a href="/" class="selected">TODO</a></li>
+		{% for tag in tags %}
+			<li><a href="/tag/{{tag.slug}}">{{tag.name}}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+	<div class="grid-sizer"></div>
+	{% for i in photos %}
+		<figure class="grid-item">
+			<a href="">
+				<img src="{{ i.image.url }}" alt="">
+			</a>
+		</figure>
+	{% endfor %}
+</section>
+{% endblock %}
+
+{% block scriptjs %}
+<script>
+	var grid = document.querySelector('.grid');
+	
+	var msnry = new Masonry(grid, {
+		itemSelector: '.grid-item',
+		columnWidth: '.grid-sizer',
+		percentPosition: true,
+		stamp: '.stamp'
+	});
+
+	imagesLoaded(grid).on('progress', function() {
+		// layout Masonry after each image loads
+		msnry.layout();
+	});
+</script>
+{% endblock %}
