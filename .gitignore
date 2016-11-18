@@ -92,7 +92,7 @@ ENV/
 .DS_Store
 
 # SQLite
-.sqlite3
+*.sqlite3
 
 # Other
 pendientes.txt
