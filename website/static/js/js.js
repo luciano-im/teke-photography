@@ -13,20 +13,22 @@ document.onreadystatechange = function () {
 				if (request.status >= 200 && request.status < 400) {
 					// Success!
 					var data = JSON.parse(request.response);
-					console.log(data);
-					var elems = [];
-					var fragment = document.createDocumentFragment();
-					for (i=0; i<data.length; i++) {
-						var elem = getItemElement(data[i]);
-						fragment.appendChild(elem);
-						elems.push(elem);
+					if (data.length > 0) {
+						console.log(data);
+						var elems = [];
+						var fragment = document.createDocumentFragment();
+						for (i=0; i<data.length; i++) {
+							var elem = getItemElement(data[i]);
+							fragment.appendChild(elem);
+							elems.push(elem);
+						}
+						imagesLoaded(elem, function() {
+							// append elements to container
+							grid.appendChild(fragment);
+							msnry.appended(elems);
+							msnry.layout();
+						});
 					}
-					imagesLoaded(elem, function() {
-						// append elements to container
-						grid.appendChild(fragment);
-						msnry.appended(elems);
-						msnry.layout();
-					});
 				} else {
 					// Error!
 					console.log("Error: "+request.status);
@@ -38,13 +40,14 @@ document.onreadystatechange = function () {
 
 		function getItemElement(url) {
 			var img = document.createElement('img');
-			img.src = url
+			img.src = url;
 			var lnk = document.createElement('a');
+			lnk.href = '/';
 			lnk.appendChild(img);
 			var figure = document.createElement('figure');
-			figure.className = 'grid-item'
+			figure.className = 'grid-item';
 			figure.appendChild(lnk);
-			return figure
+			return figure;
 		}
 
 		window.onscroll = function(){

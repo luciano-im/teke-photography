@@ -25,12 +25,11 @@ def index(request):
 		return HttpResponse(json.dumps(data), content_type='application/json')
 	else:
 		max_id = Photos.objects.all().order_by("-id")[0]
-		#print xrange(1, max_id.id)
 		random_ids = random.sample(xrange(1, max_id.id+1), max_id.id)
-		response = random_ids[:settings.ITEMS_PER_PAGE]
 		#print 'random_ids: ', random_ids
-		request.session['ids'] = random_ids[settings.ITEMS_PER_PAGE:]
+		response = random_ids[:settings.ITEMS_PER_PAGE]
 		#print 'response: ', response
+		request.session['ids'] = random_ids[settings.ITEMS_PER_PAGE:]
 		photos_list = Photos.objects.in_bulk(response)
 		ordered_photos = [photos_list.get(id,None) for id in response]
 		photos = filter(None, ordered_photos)
