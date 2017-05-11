@@ -1,3 +1,25 @@
+# Node modules
+node_modules/
+
+# Staticfiles & mediafiles
+#staticfiles/
+mediafiles/
+
+# Sqlite
+#*.sqlite3
+
+# Secret Key
+secret_key.txt
+
+# Remote Server
+#remote_server.txt
+
+# Email account
+#email_account.txt
+
+# Mac
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -20,6 +42,7 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -66,7 +89,7 @@ docs/_build/
 # PyBuilder
 target/
 
-# IPython Notebook
+# Jupyter Notebook
 .ipynb_checkpoints
 
 # pyenv
@@ -79,6 +102,7 @@ celerybeat-schedule
 .env
 
 # virtualenv
+.venv/
 venv/
 ENV/
 
@@ -87,13 +111,3 @@ ENV/
 
 # Rope project settings
 .ropeproject
-
-# OSX
-.DS_Store
-
-# SQLite
-*.sqlite3
-
-# Other
-pendientes.txt
-secret_key.txt

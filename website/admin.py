@@ -1,14 +1,19 @@
+#-*- coding: utf-8 -*-
+
 import os
 
 from django.conf import settings
 from django.contrib import admin
-#from django.shortcuts import render
+from django.contrib.auth.models import Group
+
 from django.template.loader import render_to_string
 
 from website.models import Photo, Photos
 
 #from sorl.thumbnail import get_thumbnail
 
+# Unregister models
+admin.site.unregister(Group)
 
 class PhotosInline(admin.TabularInline):
 	model = Photos
@@ -35,4 +40,5 @@ class PhotoAdmin(admin.ModelAdmin):
 	image_list.short_description = 'Fotos'
 
 
+# Register models
 admin.site.register(Photo, PhotoAdmin)

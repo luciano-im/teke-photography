@@ -1,0 +1,5 @@
+-Personalizar nombre en panel "Mis Acciones"
+-Completar el uso de sesiones
+-Cuando no hay mas imagenes para cargar que indique que se llego al final
+-Ver si al eliminar un registro tambien se borra la foto
+-Lightbox

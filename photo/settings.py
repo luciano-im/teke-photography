@@ -1,3 +1,5 @@
+#-*- coding: utf-8 -*-
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -16,15 +18,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ADMINS = [('Luciano Muñoz', 'hola@luciano.im'),]
+MANAGERS = [('Luciano Muñoz', 'hola@luciano.im'),]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.contenttypes',
+    'grappelli.dashboard',
     'grappelli',
     'filebrowser',
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -73,6 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'CONN_MAX_AGE': 60,
     }
 }
 
@@ -137,4 +143,66 @@ FILEBROWSER_ADMIN_THUMBNAIL = 'admin_thumbnail'
 THUMBNAIL_DEBUG = False
 
 #Website
-ITEMS_PER_PAGE = 12
+ITEMS_PER_PAGE = 5
+
+# Grappelli Settings
+GRAPPELLI_ADMIN_TITLE = 'ELPIBEDELACAMARA'
+GRAPPELLI_INDEX_DASHBOARD = 'website.dashboard.CustomIndexDashboard'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'null': {
+            'level':'DEBUG',
+            'class':'logging.NullHandler',
+        },
+        'console':{
+            'level':'DEBUG',
+            'class':'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'logfile': {
+            'level':'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'django.log'),
+            'maxBytes': 1024*1024*5, # 5MB
+            'backupCount': 0,
+            'formatter': 'verbose',
+        },
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s|%(asctime)s|%(module)s|%(process)d|%(thread)d|%(message)s',
+            'datefmt' : "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s|%(message)s'
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'website.import_tasks': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'website.models': {
+            'handlers': ['console', 'logfile'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'django.security.DisallowedHost': {
+            'handlers': ['null'],
+            'propagate': False,
+        },
+    }
+}
