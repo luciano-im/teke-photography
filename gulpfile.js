@@ -8,6 +8,7 @@ var argv = require('yargs').argv;
 var es = require('event-stream')
 
 var stylus = require('gulp-stylus');
+var jeet = require('jeet');
 var autoprefixer = require('gulp-autoprefixer');
 var minifyCss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
@@ -45,7 +46,7 @@ var clean = build ? ['clean'] : [];
 // CUSTOMS TASKS
 // --------------------------
 
-// Clean 
+// Clean
 gulp.task('clean', function() {
 	return del([static]);
 });
@@ -54,11 +55,6 @@ gulp.task('clean', function() {
 gulp.task('assets', clean, function() {
 	var assets = gulp.src(source + 'assets/**/*')
 		.pipe(gulp.dest(static + 'assets/'));
-	var taxes = gulp.src(source + 'taxes/**/*')
-		.pipe(gulp.dest(static + 'taxes/'));
-	var video = gulp.src(source + 'video/**/*')
-		.pipe(gulp.dest(static + 'video/'));
-	return es.merge(assets, taxes, video);
 });
 
 // Process Stylus and compress CSS
@@ -67,7 +63,11 @@ gulp.task('css', clean, function() {
 		.pipe(plumber({
 			errorHandler: onError
 		}))
-		.pipe(stylus())
+		.pipe(stylus({
+			use: [
+				jeet()
+			]
+		}))
 		.pipe(gulp.dest(static + 'css/'));
 });
 
@@ -91,11 +91,11 @@ gulp.task('js', clean, function(){
 });
 
 // Optimize Images
-gulp.task('images', clean, function() {
-	return gulp.src(source + 'img/**/*.*')
+gulp.task('compress-images', clean, function() {
+  return gulp.src(source + 'img/**/*')
 		.pipe(changed(static + 'img/'))
 		.pipe(imagemin([
-			imagemin.gifsicle(), 
+			imagemin.gifsicle(),
 			imagemin.svgo(),
 			jpegoptim({
 				progressive: true,
@@ -105,12 +105,19 @@ gulp.task('images', clean, function() {
 				quality: 80,
 				verbose: true
 			})
-		],
+    ],
 		{
 			verbose: true
 		}))
 		.pipe(gulp.dest(static + 'img/'));
 });
+
+// Optimize Fonts
+gulp.task('compress-fonts', function() {
+  return gulp.src(source + 'fonts/**/*')
+    .pipe(fontmin())
+    .pipe(gulp.dest(static + 'fonts/'));
+})
 
 
 // --------------------------
@@ -126,18 +133,19 @@ gulp.task('watch', function() {
 	//Watch changes in styles, js, html and images
 	gulp.watch(source + 'css/*.styl', ['build-css']);
 	gulp.watch(source + 'js/**/*.js', ['js']);
-	gulp.watch(source + 'img/**/*.*', ['images']);
+	gulp.watch(source + 'img/**/*', ['compress-images']);
+  gulp.watch(source + 'fonts/**/*', ['compress-fonts']);
 	gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });
 
 // BUILD task
 gulp.task('build', function() {
-	runSequence('assets', 'build-css', 'js', 'images')
+	runSequence('assets', 'build-css', 'js', 'compress-images', 'compress-fonts')
 });
 
 // DEFAULT task
 gulp.task('default', function() {
-	runSequence('assets', 'build-css', 'js', 'images', 'watch')
+	runSequence('assets', 'build-css', 'js', 'compress-images', 'compress-fonts', 'watch')
 })
 
 // --------------------------
@@ -159,11 +167,3 @@ gulp.task('default', function() {
 // 		stdio: 'inherit'
 // 	});
 // });
-
-
-// gulp.task('compress-fonts', function() {
-//     return gulp
-//         .src('./src/fonts/**/*')
-//         .pipe(fontmin())
-//         .pipe(gulp.dest('./dist/fonts/'));
-// })

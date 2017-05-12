@@ -333,41 +333,33 @@ ul li {
   list-style: none;
 }
 header {
-  *zoom: 1;
   float: left;
   clear: none;
   text-align: inherit;
-  width: 20%;
+  width: 17.6%;
   margin-left: 0%;
-  margin-right: 0%;
+  margin-right: 3%;
   padding: 0.5em 1em;
 }
-header:before,
-header:after {
+header::after {
   content: '';
   display: table;
-}
-header:after {
   clear: both;
 }
 header:last-child {
   margin-right: 0%;
 }
 section {
-  *zoom: 1;
   float: left;
   clear: none;
   text-align: inherit;
-  width: 80%;
+  width: 79.4%;
   margin-left: 0%;
-  margin-right: 0%;
+  margin-right: 3%;
 }
-section:before,
-section:after {
+section::after {
   content: '';
   display: table;
-}
-section:after {
   clear: both;
 }
 section:last-child {
@@ -394,14 +386,12 @@ header .logo div img {
   position: relative;
 }
 header .logo div .camera {
-  -webkit-transition: all 1s ease;
   transition: all 1s ease;
   z-index: 2;
 }
 header .logo div .camera:hover {
   opacity: 0;
-  -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 header .logo div .camera:hover +.teke {
   opacity: 1;
@@ -410,7 +400,6 @@ header .logo div .teke {
   border-radius: 50%;
   margin-left: -130px;
   opacity: 0;
-  -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
   width: 130px;
   z-index: 1;
@@ -433,14 +422,10 @@ header .social li {
 header .social li a {
   color: #fc6e51;
   display: block;
-  -webkit-transition: -webkit-transform 0.5s ease;
-  transition: -webkit-transform 0.5s ease;
   transition: transform 0.5s ease;
-  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
 }
 header .social li a:hover {
-  -webkit-transform: translateY(-0.2em);
-          transform: translateY(-0.2em);
+  transform: translateY(-0.2em);
 }
 nav {
   margin: 1.5em 0;
@@ -485,7 +470,6 @@ nav li a .icon-long-arrow-right {
 .home figure a img {
   height: auto;
   vertical-align: middle;
-  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   width: 100%;
 }
@@ -498,7 +482,6 @@ nav li a .icon-long-arrow-right {
   position: absolute;
   right: 0;
   top: 0;
-  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   z-index: 1;
 }
