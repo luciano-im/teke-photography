@@ -336,9 +336,9 @@ header {
   float: left;
   clear: none;
   text-align: inherit;
-  width: 17.6%;
+  width: 20%;
   margin-left: 0%;
-  margin-right: 3%;
+  margin-right: 0%;
   padding: 0.5em 1em;
 }
 header::after {
@@ -353,9 +353,9 @@ section {
   float: left;
   clear: none;
   text-align: inherit;
-  width: 79.4%;
+  width: 80%;
   margin-left: 0%;
-  margin-right: 3%;
+  margin-right: 0%;
 }
 section::after {
   content: '';
