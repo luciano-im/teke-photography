@@ -22,9 +22,9 @@ var pngquant = require('imagemin-pngquant');
 
 // Errors
 var onError = function(err) {
-    gutil.log(gutil.colors.red('¡Oh, no! 😱'));
-    gutil.beep();
-    console.log(err);
+	gutil.log(gutil.colors.red('¡Oh, no! 😱'));
+	gutil.beep();
+	console.log(err);
 }
 
 // --------------------------

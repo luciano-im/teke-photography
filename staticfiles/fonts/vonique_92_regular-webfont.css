@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Vonique 92";
+    src: url("vonique_92_regular-webfont.eot"); /* IE9 */
+    src: url("vonique_92_regular-webfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("vonique_92_regular-webfont.woff") format("woff"), /* chrome, firefox */
+    url("vonique_92_regular-webfont.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("vonique_92_regular-webfont.svg#Vonique 92") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+

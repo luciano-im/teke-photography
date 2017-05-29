@@ -333,7 +333,6 @@ ul li {
   list-style: none;
 }
 header {
-  *zoom: 1;
   float: left;
   clear: none;
   text-align: inherit;
@@ -342,19 +341,15 @@ header {
   margin-right: 0%;
   padding: 0.5em 1em;
 }
-header:before,
-header:after {
+header::after {
   content: '';
   display: table;
-}
-header:after {
   clear: both;
 }
 header:last-child {
   margin-right: 0%;
 }
 section {
-  *zoom: 1;
   float: left;
   clear: none;
   text-align: inherit;
@@ -362,24 +357,17 @@ section {
   margin-left: 0%;
   margin-right: 0%;
 }
-section:before,
-section:after {
+section::after {
   content: '';
   display: table;
-}
-section:after {
   clear: both;
 }
 section:last-child {
   margin-right: 0%;
 }
-section.home {
-  -webkit-column-count: 4;
-     -moz-column-count: 4;
-          column-count: 4;
-  -webkit-column-gap: 0;
-     -moz-column-gap: 0;
-          column-gap: 0;
+.grid-sizer,
+.grid-item {
+  width: 25%;
 }
 header .description {
   font-size: 0.8em;
@@ -398,14 +386,12 @@ header .logo div img {
   position: relative;
 }
 header .logo div .camera {
-  -webkit-transition: all 1s ease;
   transition: all 1s ease;
   z-index: 2;
 }
 header .logo div .camera:hover {
   opacity: 0;
-  -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 header .logo div .camera:hover +.teke {
   opacity: 1;
@@ -414,7 +400,6 @@ header .logo div .teke {
   border-radius: 50%;
   margin-left: -130px;
   opacity: 0;
-  -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
   width: 130px;
   z-index: 1;
@@ -437,14 +422,10 @@ header .social li {
 header .social li a {
   color: #fc6e51;
   display: block;
-  -webkit-transition: -webkit-transform 0.5s ease;
-  transition: -webkit-transform 0.5s ease;
   transition: transform 0.5s ease;
-  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
 }
 header .social li a:hover {
-  -webkit-transform: translateY(-0.2em);
-          transform: translateY(-0.2em);
+  transform: translateY(-0.2em);
 }
 nav {
   margin: 1.5em 0;
@@ -489,7 +470,6 @@ nav li a .icon-long-arrow-right {
 .home figure a img {
   height: auto;
   vertical-align: middle;
-  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   width: 100%;
 }
@@ -502,7 +482,6 @@ nav li a .icon-long-arrow-right {
   position: absolute;
   right: 0;
   top: 0;
-  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   z-index: 1;
 }
@@ -529,4 +508,25 @@ nav li a .icon-long-arrow-right {
   font-style: italic;
   list-style: disc;
   margin-left: 1em;
+}
+.tags ul {
+  border-bottom: 2px solid #fc6e51;
+  padding: 0.5em;
+}
+.tags ul li {
+  margin: 0 0.3em;
+}
+.tags ul li a {
+  color: #3c3c3b;
+  display: block;
+  font-size: 0.7em;
+  padding: 0.5em 1em;
+  text-transform: uppercase;
+}
+.tags ul li a.selected {
+  border: 1px solid #fc6e51;
+  color: #fc6e51;
+}
+.tags ul li a:not(.selected):hover {
+  border-bottom: 1px dashed #fc6e51;
 }
