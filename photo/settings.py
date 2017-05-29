@@ -16,7 +16,7 @@ with open(BASE_DIR+'/photo/secret_key.txt') as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 ADMINS = [('Luciano Muñoz', 'hola@luciano.im'),]
 MANAGERS = [('Luciano Muñoz', 'hola@luciano.im'),]
@@ -129,6 +129,8 @@ STATICFILES_FINDERS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #Django-Taggit options
 TAGGIT_CASE_INSENSITIVE = True

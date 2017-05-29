@@ -3,7 +3,7 @@ node_modules/
 
 # Staticfiles & mediafiles
 #staticfiles/
-mediafiles/
+#mediafiles/
 
 # Sqlite
 #*.sqlite3
