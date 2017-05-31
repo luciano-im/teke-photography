@@ -11,6 +11,7 @@ from django.contrib.auth.models import Group
 from django.template.loader import render_to_string
 
 from website.models import Photo, Photos
+from website.widgets import LabelTagsWidget
 
 #from sorl.thumbnail import get_thumbnail
 
