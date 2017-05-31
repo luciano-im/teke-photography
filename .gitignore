@@ -2,7 +2,7 @@
 node_modules/
 
 # Staticfiles & mediafiles
-#staticfiles/
+staticfiles/
 #mediafiles/
 
 # Sqlite

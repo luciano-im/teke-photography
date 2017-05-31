@@ -1,10 +1,12 @@
 from django import forms
 from django.utils import six
+from django.forms.utils import flatatt
+from django.utils.html import mark_safe
 
 from taggit.models import Tag
 from taggit.utils import edit_string_for_tags
 
-class LabelTagsWidget(forms.TextInput):
+class LabelTagWidget(forms.TextInput):
 
 	model = Tag
 
@@ -41,7 +43,7 @@ class LabelTagsWidget(forms.TextInput):
 			formatted_value = self.format_value(value)
 			selected_tags = self.tag_list([t.name for t in current_tags])
 
-		input_field = super(LabelTagsWidget, self).render(name, formatted_value, attrs)
+		input_field = super(LabelTagWidget, self).render(name, formatted_value, attrs)
 
 		if attrs.get('class') is None:
 			attrs.update({'class': 'taggit-labels taggit-list'})
@@ -50,3 +52,9 @@ class LabelTagsWidget(forms.TextInput):
 		tag_li = "".join([u"<li data-tag-name='{0}' class='{1}'>{0}</li>".format(tag[0], tag[1]) for tag in selected_tags])
 		tag_ul = u"<ul{0}>{1}</ul>".format(list_attrs, tag_li)
 		return mark_safe(u"{0}{1}".format(tag_ul, input_field))
+
+	class Media:
+		css = {
+			'all': ('assets/css/taggit_labels.css',)
+		}
+		js = ('assets/js/taggit_labels.js',)

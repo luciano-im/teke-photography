@@ -18,16 +18,17 @@ from PIL import Image
 
 class Photo(models.Model):
 
-	def tag_helptext():
-		help_text = "Options: "
-		for t in Tag.objects.all():
-		    help_text += t.name + " ||| "
-		return help_text
+	# def tag_helptext():
+	# 	help_text = "Options: "
+	# 	for t in Tag.objects.all():
+	# 	    help_text += t.name + " ||| "
+	# 	return help_text
 
 	photo_id = models.AutoField(primary_key=True)
 	date_created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de Creacion')
 	date_modified = models.DateTimeField(auto_now=True, verbose_name='Fecha de Modificacion')
-	tags = TaggableManager(verbose_name='Tags', help_text=tag_helptext())
+	tags = TaggableManager(verbose_name='Tags')
+	# tags = TaggableManager(verbose_name='Tags', help_text=tag_helptext())
 
 	class Meta:
 		verbose_name = 'Foto'
