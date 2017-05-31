@@ -33,7 +33,7 @@ var onError = function(err) {
 
 // Routes
 var source = 'website/src/';
-var static = 'website/static/';
+var dest = 'website/static/';
 
 // gulp build --production
 var production = !!argv.production;
@@ -48,13 +48,15 @@ var clean = build ? ['clean'] : [];
 
 // Clean
 gulp.task('clean', function() {
-	return del([static]);
+	return del([dest]);
 });
 
 // Copy assets
 gulp.task('assets', clean, function() {
 	var assets = gulp.src(source + 'assets/**/*')
-		.pipe(gulp.dest(static + 'assets/'));
+		.pipe(gulp.dest(dest + 'assets/'));
+	var assets = gulp.src(source + 'admin/**/*')
+		.pipe(gulp.dest(dest + 'admin/'));
 });
 
 // Process Stylus and compress CSS
@@ -68,11 +70,11 @@ gulp.task('css', clean, function() {
 				jeet()
 			]
 		}))
-		.pipe(gulp.dest(static + 'css/'));
+		.pipe(gulp.dest(dest + 'css/'));
 });
 
 gulp.task('prefix', function() {
-	return gulp.src(static + 'css/*.css')
+	return gulp.src(dest + 'css/*.css')
 		.pipe(plumber({
 			errorHandler: onError
 		}))
@@ -87,13 +89,13 @@ gulp.task('prefix', function() {
 gulp.task('js', clean, function(){
 	return gulp.src(source + 'js/**/*.js')
 		.pipe(gulpif(production, uglify()))
-		.pipe(gulp.dest(static + 'js/'));
+		.pipe(gulp.dest(dest + 'js/'));
 });
 
 // Optimize Images
 gulp.task('compress-images', clean, function() {
   return gulp.src(source + 'img/**/*')
-		.pipe(changed(static + 'img/'))
+		.pipe(changed(dest + 'img/'))
 		.pipe(imagemin([
 			imagemin.gifsicle(),
 			imagemin.svgo(),
@@ -109,14 +111,14 @@ gulp.task('compress-images', clean, function() {
 		{
 			verbose: true
 		}))
-		.pipe(gulp.dest(static + 'img/'));
+		.pipe(gulp.dest(dest + 'img/'));
 });
 
 // Optimize Fonts
 gulp.task('compress-fonts', function() {
   return gulp.src(source + 'fonts/**/*')
     .pipe(fontmin())
-    .pipe(gulp.dest(static + 'fonts/'));
+    .pipe(gulp.dest(dest + 'fonts/'));
 })
 
 

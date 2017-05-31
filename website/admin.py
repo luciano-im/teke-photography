@@ -19,6 +19,7 @@ from taggit.forms import TagField
 # Unregister models
 admin.site.unregister(Group)
 
+# Change taggit form to add custom widget
 class PhotoForm(forms.ModelForm):
 	tags = TagField(widget=LabelTagWidget)
 

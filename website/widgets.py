@@ -6,9 +6,18 @@ from django.utils.html import mark_safe
 from taggit.models import Tag
 from taggit.utils import edit_string_for_tags
 
+
+# Based on Django-Taggit-Labels (https://github.com/bennylope/django-taggit-labels)
 class LabelTagWidget(forms.TextInput):
 
+	#Change input field type to hidden will hide all, but with is_hidden property make visible the buttons
+	input_type = 'hidden'
+	#Set Tag model
 	model = Tag
+
+	@property
+	def is_hidden(self):
+		return False
 
 	def tag_list(self, tags):
 		"""
@@ -55,6 +64,6 @@ class LabelTagWidget(forms.TextInput):
 
 	class Media:
 		css = {
-			'all': ('assets/css/taggit_labels.css',)
+			'all': ('admin/tag-widget/tag-widget.css',)
 		}
-		js = ('assets/js/taggit_labels.js',)
+		js = ('admin/tag-widget/tag-widget.js',)
