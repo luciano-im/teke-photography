@@ -16,6 +16,9 @@ with open(BASE_DIR+'/photo/secret_key.txt') as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Only for SORL because this setting is deprecated in Django 1.10
+TEMPLATE_DEBUG = False
+
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 ADMINS = [('Luciano Muñoz', 'hola@luciano.im'),]

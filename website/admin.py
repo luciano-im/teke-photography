@@ -2,10 +2,12 @@
 
 import os
 
+from django.forms import ModelForm
+from django import forms
+
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.models import Group
-
 from django.template.loader import render_to_string
 
 from website.models import Photo, Photos
@@ -14,6 +16,7 @@ from website.models import Photo, Photos
 
 # Unregister models
 admin.site.unregister(Group)
+
 
 class PhotosInline(admin.TabularInline):
 	model = Photos
