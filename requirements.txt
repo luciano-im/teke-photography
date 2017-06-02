@@ -5,4 +5,4 @@ django-grappelli==2.8.3
 django-taggit==0.21.3
 Pillow==3.4.2
 pytz==2017.2
-sorl-thumbnail==12.3
+sorl-thumbnail==12.4a1

@@ -65,7 +65,7 @@ class Photos(models.Model):
 			im.thumbnail(size)
 			im.save(new_file, im.format)
 		except IOError:
-			print("cannot create thumbnail for", new_file)
+			print("cannot create image for", new_file)
 
 
 	signals.filebrowser_post_upload.connect(post_upload)
