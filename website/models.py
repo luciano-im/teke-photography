@@ -17,18 +17,10 @@ from PIL import Image
 
 
 class Photo(models.Model):
-
-	# def tag_helptext():
-	# 	help_text = "Options: "
-	# 	for t in Tag.objects.all():
-	# 	    help_text += t.name + " ||| "
-	# 	return help_text
-
 	photo_id = models.AutoField(primary_key=True)
 	date_created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de Creacion')
 	date_modified = models.DateTimeField(auto_now=True, verbose_name='Fecha de Modificacion')
 	tags = TaggableManager(verbose_name='Tags')
-	# tags = TaggableManager(verbose_name='Tags', help_text=tag_helptext())
 
 	class Meta:
 		verbose_name = 'Foto'
@@ -53,7 +45,7 @@ class Photos(models.Model):
 		filename = kwargs['file'].filename
 		ext = kwargs['file'].extension
 		datetime = kwargs['file'].datetime
-		new_name = datetime.strftime('%Y%m%d%H%M%S%f') + ext
+		new_name = datetime.now().strftime('%Y%m%d%H%M%S%f') + ext
 		old_file = os.path.join(settings.MEDIA_ROOT, path_root, filename)
 		new_file = os.path.join(settings.MEDIA_ROOT, path_root, new_name)
 		#print "old_file:", old_file
@@ -66,6 +58,5 @@ class Photos(models.Model):
 			im.save(new_file, im.format)
 		except IOError:
 			print("cannot create image for", new_file)
-
 
 	signals.filebrowser_post_upload.connect(post_upload)
