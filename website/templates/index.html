@@ -11,10 +11,17 @@
 <section class="home grid">
 	<div class="tags stamp">
 		<ul class="h-list">
-		<li><a href="/" class="selected">TODO</a></li>
-		{% for tag in tags %}
-			<li><a href="/tag/{{tag.slug}}">{{tag.name}}</a></li>
-		{% endfor %}
+			{% if whereIAm.0 == 'tag' %}
+				<li><a href="/">TODO</a></li>
+				{% for tag in tags %}
+					<li><a href="/tag/{{tag.slug}}" {% if tag.slug == whereIAm.1 %} class="selected" {% endif %}>{{tag.name}}</a></li>
+				{% endfor %}
+			{% else %}
+				<li><a href="/" class="selected">TODO</a></li>
+				{% for tag in tags %}
+					<li><a href="/tag/{{tag.slug}}">{{tag.name}}</a></li>
+				{% endfor %}
+			{% endif %}
 		</ul>
 	</div>
 	<div class="grid-sizer"></div>
@@ -31,7 +38,7 @@
 {% block scriptjs %}
 <script>
 	var grid = document.querySelector('.grid');
-	
+
 	var msnry = new Masonry(grid, {
 		itemSelector: '.grid-item',
 		columnWidth: '.grid-sizer',

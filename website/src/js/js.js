@@ -26,7 +26,9 @@ document.onreadystatechange = function () {
 							// append elements to container
 							grid.appendChild(fragment);
 							msnry.appended(elems);
-							msnry.layout();
+							// msnry.layout();
+							// To fix overlapping element in ajax load
+							msnry.reloadItems();
 						});
 					}
 				} else {
