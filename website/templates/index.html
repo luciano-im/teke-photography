@@ -26,7 +26,7 @@
 	</div>
 	<div class="grid-sizer"></div>
 	{% for i in photos %}
-		<figure class="grid-item">
+		<figure class="grid-item" style="display:none;">
 			<a href="">
 				<img src="{{ i.image.url }}" alt="">
 			</a>
@@ -43,10 +43,27 @@
 		itemSelector: '.grid-item',
 		columnWidth: '.grid-sizer',
 		percentPosition: true,
-		stamp: '.stamp'
+		stamp: '.stamp',
+		hiddenStyle: {
+			transform: 'translateY(100px)',
+      opacity: 0
+    },
+    visibleStyle: {
+      transform: 'translateY(0px)',
+      opacity: 1
+    }
 	});
 
-	imagesLoaded(grid).on('progress', function() {
+	function findParent(el, cls) {
+		while ((el = el.parentElement) && !el.classList.contains(cls));
+		return el;
+	}
+
+	imagesLoaded(grid).on('progress', function(instance, image) {
+		var el = document.querySelector("img[src='"+image.img.getAttribute('src')+"']");
+		var parent = findParent(el, 'grid-item');
+		// un-hide item
+		parent.style.display = '';
 		// layout Masonry after each image loads
 		msnry.layout();
 	});

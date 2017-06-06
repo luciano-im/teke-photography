@@ -44,10 +44,10 @@
 		</div>
 		<nav>
 			<ul>
-				<li {% if whereIAm == "" %}class="active"{% endif %}><a href="/">HOME <i class="icon-long-arrow-right"></i></a></li>
-				<li {% if whereIAm == "portfolio" %}class="active"{% endif %}><a href="/portfolio">PORTFOLIO <i class="icon-long-arrow-right"></i></a></li>
-				<li {% if whereIAm == "setup" %}class="active"{% endif %}><a href="/setup">SETUP <i class="icon-long-arrow-right"></i></a></li>
-				<li {% if whereIAm == "contact" %}class="active"{% endif %}><a href="/contact">CONTACTO <i class="icon-long-arrow-right"></i></a></li>
+				<li {% if whereIAm.0 == "" or whereIAm.0 == "tag" %}class="active"{% endif %}><a href="/">HOME <i class="icon-long-arrow-right"></i></a></li>
+				<!-- <li {% if whereIAm.0 == "portfolio" %}class="active"{% endif %}><a href="/portfolio">PORTFOLIO <i class="icon-long-arrow-right"></i></a></li> -->
+				<li {% if whereIAm.0 == "setup" %}class="active"{% endif %}><a href="/setup">SETUP <i class="icon-long-arrow-right"></i></a></li>
+				<li {% if whereIAm.0 == "contact" %}class="active"{% endif %}><a href="/contact">CONTACTO <i class="icon-long-arrow-right"></i></a></li>
 			</ul>
 		</nav>
 		<div class="description">

@@ -14,22 +14,9 @@ document.onreadystatechange = function () {
 					// Success!
 					var data = JSON.parse(request.response);
 					if (data.length > 0) {
-						console.log(data);
-						var elems = [];
-						var fragment = document.createDocumentFragment();
-						for (i=0; i<data.length; i++) {
-							var elem = getItemElement(data[i]);
-							fragment.appendChild(elem);
-							elems.push(elem);
-						}
-						imagesLoaded(elem, function() {
-							// append elements to container
-							grid.appendChild(fragment);
-							msnry.appended(elems);
-							// msnry.layout();
-							// To fix overlapping element in ajax load
-							msnry.reloadItems();
-						});
+						var items = getItems(data);
+						var fragment = getFragment(data);
+						loadImages(fragment, items);
 					}
 				} else {
 					// Error!
@@ -38,6 +25,45 @@ document.onreadystatechange = function () {
 			};
 
 			request.send();
+		}
+
+		function loadImages(fragment, items) {
+			// append elements to container
+			grid.appendChild(fragment);
+			console.log(grid);
+
+			var imgLoad = imagesLoaded(items);
+
+			imgLoad.on('progress', function(instance, image) {
+				var el = document.querySelector("img[src='"+image.img.getAttribute('src')+"']");
+				var parent = findParent(el, 'grid-item');
+				// un-hide item
+				parent.style.display = '';
+				// masonry does its thing
+				msnry.appended(parent);
+			});
+		}
+
+		function getItems(data) {
+			var elems = [];
+			for (i=0; i<data.length; i++) {
+				var item = getItemElement(data[i]);
+				// hide by default
+				item.style.display = 'none';
+				elems.push(item);
+			}
+			return elems;
+		}
+
+		function getFragment(data) {
+			var fragment = document.createDocumentFragment();
+			for (i=0; i<data.length; i++) {
+				var item = getItemElement(data[i]);
+				// hide by default
+				item.style.display = 'none';
+				fragment.appendChild(item);
+			}
+			return fragment;
 		}
 
 		function getItemElement(url) {
@@ -49,6 +75,7 @@ document.onreadystatechange = function () {
 			var figure = document.createElement('figure');
 			figure.className = 'grid-item';
 			figure.appendChild(lnk);
+
 			return figure;
 		}
 
@@ -56,6 +83,11 @@ document.onreadystatechange = function () {
 			if ((window.innerHeight + window.scrollY) == document.body.scrollHeight) {
 				addItemsAjax();
 			}
+		}
+
+		function findParent(el, cls) {
+			while ((el = el.parentElement) && !el.classList.contains(cls));
+			return el;
 		}
 
 		function hasClass(elem, className) {
