@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+<!-- load filebrowser templatetags -->
+{% load fb_versions %}
 
 {% block head %}
 <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
@@ -28,7 +30,7 @@
 	{% for i in photos %}
 		<figure class="grid-item" style="display:none;">
 			<a href="">
-				<img src="{{ i.image.url }}" alt="">
+				<img src="{% version i.image 'thumbnail' %}" alt="">
 			</a>
 		</figure>
 	{% endfor %}

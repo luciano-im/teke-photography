@@ -1,7 +1,8 @@
-{% load thumbnail %}
+<!-- load filebrowser templatetags -->
+{% load fb_versions %}
+
 {% for o in obj %}
-	<!-- <img src="{{ o.image.url }}" width="{{ o.image.width }}" height="{{ o.image.height }}"> -->
-	{% thumbnail o.image "60x60" crop="center" as im %}
+	{% version o.image 'admin_thumbnail' as im %}
 		<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
 	{% empty %}
 		<p>No image</p>

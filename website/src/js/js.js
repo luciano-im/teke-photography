@@ -13,6 +13,7 @@ document.onreadystatechange = function () {
 				if (request.status >= 200 && request.status < 400) {
 					// Success!
 					var data = JSON.parse(request.response);
+					//console.log(data);
 					if (data.length > 0) {
 						var items = getItems(data);
 						var fragment = getFragment(data);
@@ -30,7 +31,6 @@ document.onreadystatechange = function () {
 		function loadImages(fragment, items) {
 			// append elements to container
 			grid.appendChild(fragment);
-			console.log(grid);
 
 			var imgLoad = imagesLoaded(items);
 
@@ -47,7 +47,7 @@ document.onreadystatechange = function () {
 		function getItems(data) {
 			var elems = [];
 			for (i=0; i<data.length; i++) {
-				var item = getItemElement(data[i]);
+				var item = getItemElement(data[i].thumb);
 				// hide by default
 				item.style.display = 'none';
 				elems.push(item);
@@ -58,7 +58,7 @@ document.onreadystatechange = function () {
 		function getFragment(data) {
 			var fragment = document.createDocumentFragment();
 			for (i=0; i<data.length; i++) {
-				var item = getItemElement(data[i]);
+				var item = getItemElement(data[i].thumb);
 				// hide by default
 				item.style.display = 'none';
 				fragment.appendChild(item);

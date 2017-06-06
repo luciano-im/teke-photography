@@ -23,7 +23,11 @@ def get_ajax_response(request):
 	photos = Photos.objects.filter(id__in=response)
 	data = []
 	for photo in photos:
-		data.append(photo.image.url)
+		pic = {}
+		pic['original'] = photo.image.url
+		# Media URL + Version's folder + Version file
+		pic['thumb'] = settings.MEDIA_URL + photo.image.versions_basedir + '/' + photo.image.version_name('thumbnail')
+		data.append(pic)
 
 	return data
 
@@ -45,7 +49,6 @@ def get_photos_response(request, tag):
 
 def index(request):
 	response = get_photos_response(request, None)
-	print response
 	if response.get('photos'):
 		return render(request, 'index.html', {'photos':response['photos'], 'tags':Photo.tags.all()})
 	else:

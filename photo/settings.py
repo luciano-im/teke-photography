@@ -140,8 +140,13 @@ TAGGIT_CASE_INSENSITIVE = True
 
 #FileBrowser
 FILEBROWSER_DIRECTORY= 'photos/'
+FILEBROWSER_VERSIONS_BASEDIR = '_versions'
 FILEBROWSER_VERSION_QUALITY = 100
-FILEBROWSER_ADMIN_VERSIONS = ['admin_thumbnail']
+FILEBROWSER_VERSIONS = {
+    'admin_thumbnail': {'verbose_name': 'Admin Thumbnail', 'width': 60, 'height': 60, 'opts': 'crop'},
+    'thumbnail': {'verbose_name': 'Thumbnail', 'width': 300, 'height': '', 'opts': ''},
+}
+FILEBROWSER_ADMIN_VERSIONS = ['admin_thumbnail', 'thumbnail']
 FILEBROWSER_ADMIN_THUMBNAIL = 'admin_thumbnail'
 
 #Sorl
