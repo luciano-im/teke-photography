@@ -4,7 +4,7 @@
 {% load fb_versions %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static "assets/js/jsOnlyLightbox/css/lightbox.min.css" %}">
+<link rel="stylesheet" href="{% static "assets/js/jsOnlyLightbox-0.5.6/css/lightbox.min.css" %}">
 <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
 {% endblock %}
@@ -70,7 +70,7 @@
 		msnry.layout();
 	});
 </script>
-<script src="{% static "assets/js/jsOnlyLightbox/js/lightbox.min.js" %}" type="text/javascript"></script>
+<script src="{% static "assets/js/jsOnlyLightbox-0.5.6/js/lightbox.js" %}" type="text/javascript"></script>
 <script>
 	var lightbox = new Lightbox();
 	lightbox.load();

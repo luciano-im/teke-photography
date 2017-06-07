@@ -59,10 +59,9 @@ document.onreadystatechange = function () {
 			var fragment = document.createDocumentFragment();
 			for (i=0; i<data.length; i++) {
 				var item = getItemElement(data[i].thumb, data[i].original);
-				// hide by default
-				// console.log(item.querySelector('a'));
+				// Add item to lightbox
 				lightbox.thumbnails.push(item.querySelector('a'));
-				lightbox.load();
+				// hide by default
 				item.style.display = 'none';
 				fragment.appendChild(item);
 			}
@@ -74,6 +73,7 @@ document.onreadystatechange = function () {
 			img.src = imgURL;
 			var lnk = document.createElement('a');
 			lnk.href = aURL;
+			// Set lightbox attributes
 			lnk.setAttribute('data-jslghtbx', aURL);
 			lnk.setAttribute('data-jslghtbx-group', 'mygroup1');
 			lnk.appendChild(img);
