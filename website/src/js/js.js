@@ -47,7 +47,7 @@ document.onreadystatechange = function () {
 		function getItems(data) {
 			var elems = [];
 			for (i=0; i<data.length; i++) {
-				var item = getItemElement(data[i].thumb);
+				var item = getItemElement(data[i].thumb, data[i].original);
 				// hide by default
 				item.style.display = 'none';
 				elems.push(item);
@@ -58,19 +58,24 @@ document.onreadystatechange = function () {
 		function getFragment(data) {
 			var fragment = document.createDocumentFragment();
 			for (i=0; i<data.length; i++) {
-				var item = getItemElement(data[i].thumb);
+				var item = getItemElement(data[i].thumb, data[i].original);
 				// hide by default
+				// console.log(item.querySelector('a'));
+				lightbox.thumbnails.push(item.querySelector('a'));
+				lightbox.load();
 				item.style.display = 'none';
 				fragment.appendChild(item);
 			}
 			return fragment;
 		}
 
-		function getItemElement(url) {
+		function getItemElement(imgURL, aURL) {
 			var img = document.createElement('img');
-			img.src = url;
+			img.src = imgURL;
 			var lnk = document.createElement('a');
-			lnk.href = '/';
+			lnk.href = aURL;
+			lnk.setAttribute('data-jslghtbx', aURL);
+			lnk.setAttribute('data-jslghtbx-group', 'mygroup1');
 			lnk.appendChild(img);
 			var figure = document.createElement('figure');
 			figure.className = 'grid-item';
