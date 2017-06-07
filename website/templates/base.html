@@ -7,6 +7,7 @@
 		{% block title %}elpibedelacamara - Diego Muñoz Photographer{% endblock %}
 	</title>
 
+	<script src="https://use.fontawesome.com/00ad095cc1.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link rel="stylesheet" href="{% static "css/styles.css" %}">
@@ -44,10 +45,10 @@
 		</div>
 		<nav>
 			<ul>
-				<li {% if whereIAm.0 == "" or whereIAm.0 == "tag" %}class="active"{% endif %}><a href="/">HOME <i class="icon-long-arrow-right"></i></a></li>
-				<!-- <li {% if whereIAm.0 == "portfolio" %}class="active"{% endif %}><a href="/portfolio">PORTFOLIO <i class="icon-long-arrow-right"></i></a></li> -->
-				<li {% if whereIAm.0 == "setup" %}class="active"{% endif %}><a href="/setup">SETUP <i class="icon-long-arrow-right"></i></a></li>
-				<li {% if whereIAm.0 == "contact" %}class="active"{% endif %}><a href="/contact">CONTACTO <i class="icon-long-arrow-right"></i></a></li>
+				<li {% if whereIAm.0 == "" or whereIAm.0 == "tag" %}class="active"{% endif %}><a href="/">HOME <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+				<!-- <li {% if whereIAm.0 == "portfolio" %}class="active"{% endif %}><a href="/portfolio">PORTFOLIO <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li> -->
+				<li {% if whereIAm.0 == "setup" %}class="active"{% endif %}><a href="/setup">SETUP <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
+				<li {% if whereIAm.0 == "contact" %}class="active"{% endif %}><a href="/contact">CONTACTO <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></li>
 			</ul>
 		</nav>
 		<div class="description">
@@ -56,8 +57,8 @@
 		</div>
 		<div class="social">
 			<ul class="h-list">
-				<li class="orange-link-dashed"><a href="http://www.instagram.com/elpibedelacamara"><i class="icon-instagram"></i></a></li>
-				<li class="orange-link-dashed"><a href="#"><i class="icon-facebook-square"></i></a></li>
+				<li class="orange-link-dashed"><a href="http://www.instagram.com/elpibedelacamara"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+				<li class="orange-link-dashed"><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
 			</ul>
 		</div>
 	</header>

@@ -62,14 +62,14 @@ nav
 		&.active
 			a
 				color black
-				.icon-long-arrow-right
+				.fa-long-arrow-right
 					opacity 1
 		a
 			color $linkColor
 			display block
 			font-size 1.2em
 			padding .3em 0 .5em
-			.icon-long-arrow-right
+			.fa-long-arrow-right
 				color $orangeColor
 				opacity 0
 
@@ -151,3 +151,37 @@ nav
 					color $orangeColor
 				&:not(.selected):hover
 					border-bottom 1px dashed $orangeColor
+
+/*#### LIGHTBOX ################################################################*/
+
+.jslghtbx-close
+	font-size 1em !important
+	&:hover
+		color $orangeColor
+
+.jslghtbx-contentwrapper
+	& > img
+		padding .2em !important
+
+.jslghtbx-next, 
+.jslghtbx-prev
+	border none !important
+	&:before
+		color white
+		font-family  FontAwesome
+		font-size 1.5em
+		position absolute
+		top 0
+	&:hover
+		&:before
+			color $orangeColor
+
+.jslghtbx-next
+	&:before
+		content "\f178"
+		left -35px
+
+.jslghtbx-prev
+	&:before
+		content "\f177"
+		right -35px
