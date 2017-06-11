@@ -1,6 +1,15 @@
 /*#### SIDEBAR ################################################################*/
 
 header
+	height 100% /* 100% Full-height */
+	z-index 100 /* Stay on top */
+	top 0
+	left 0
+	background-color white
+	overflow-x hidden /* Disable horizontal scroll */
+	overflow-y hidden
+	transition 0.5s /* 0.5 second transition effect to slide in the sidenav */
+
 	.description
 		font-size .8em
 		margin 3em 0 1.5em 0
@@ -73,10 +82,10 @@ nav
 				color $orangeColor
 				opacity 0
 
-
 /*#### HOME ################################################################*/
 
 .home
+	transition margin-left .5s
 	.grid-sizer, .grid-item
 		width 25%
 	figure
@@ -163,7 +172,7 @@ nav
 	& > img
 		padding .2em !important
 
-.jslghtbx-next, 
+.jslghtbx-next,
 .jslghtbx-prev
 	border none !important
 	&:before

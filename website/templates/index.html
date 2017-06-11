@@ -13,6 +13,7 @@
 <section class="home grid">
 	<div class="tags stamp">
 		<ul class="h-list">
+			<li><a href="javascript:void(0)"><span onclick="openNav()">open</span></a></li>
 			{% if whereIAm.0 == 'tag' %}
 				<li><a href="/">TODO</a></li>
 				{% for tag in tags %}
@@ -69,6 +70,20 @@
 		// layout Masonry after each image loads
 		msnry.layout();
 	});
+</script>
+<script>
+	function openNav() {
+		var header = document.getElementsByTagName('header')[0];
+		var tags = document.getElementsByClassName('tags')[0];
+		header.style.marginTop = tags.clientHeight.toString() + 'px';
+		header.style.marginLeft = '0';
+	}
+
+	/* Set the width of the side navigation to 0 */
+	function closeNav() {
+		var header = document.getElementsByTagName('header')[0];
+		header.style.marginLeft = '-250px';
+	}
 </script>
 <script src="{% static "assets/js/jsOnlyLightbox-0.5.6/js/lightbox.js" %}" type="text/javascript"></script>
 <script>

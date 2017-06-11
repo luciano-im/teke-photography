@@ -1,0 +1,24 @@
+@media screen and (max-width: 1080px)
+  header
+    width 230px
+
+  section
+    width calc(100% - 230px)
+
+  .home
+    .grid-sizer, .grid-item
+      width calc(100%/3)
+
+@media screen and (max-width: 830px)
+  .home
+    .grid-sizer, .grid-item
+      width calc(100%/2)
+
+@media screen and (max-width: 768px)
+  header
+    margin-left -250px
+    position fixed /* Stay in place */
+    padding 0
+
+  section
+    width 100%
