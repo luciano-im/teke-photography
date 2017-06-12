@@ -71,20 +71,6 @@
 		msnry.layout();
 	});
 </script>
-<script>
-	function openNav() {
-		var header = document.getElementsByTagName('header')[0];
-		var tags = document.getElementsByClassName('tags')[0];
-		header.style.marginTop = tags.clientHeight.toString() + 'px';
-		header.style.marginLeft = '0';
-	}
-
-	/* Set the width of the side navigation to 0 */
-	function closeNav() {
-		var header = document.getElementsByTagName('header')[0];
-		header.style.marginLeft = '-250px';
-	}
-</script>
 <script src="{% static "assets/js/jsOnlyLightbox-0.5.6/js/lightbox.js" %}" type="text/javascript"></script>
 <script>
 	var lightbox = new Lightbox();
