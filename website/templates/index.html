@@ -13,14 +13,14 @@
 <section class="home grid">
 	<div class="tags stamp">
 		<ul class="h-list">
-			<li><a href="#"><i class="fa fa-bars" aria-hidden="true" onclick="openNav()"></i></a></li>
+			<li class="burger"><a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
 			{% if whereIAm.0 == 'tag' %}
-				<li><a href="/">TODO</a></li>
+				<li class="all"><a href="/">TODO</a></li>
 				{% for tag in tags %}
 					<li><a href="/tag/{{tag.slug}}" {% if tag.slug == whereIAm.1 %} class="selected" {% endif %}>{{tag.name}}</a></li>
 				{% endfor %}
 			{% else %}
-				<li><a href="/" class="selected">TODO</a></li>
+				<li class="all"><a href="/" class="selected">TODO</a></li>
 				{% for tag in tags %}
 					<li><a href="/tag/{{tag.slug}}">{{tag.name}}</a></li>
 				{% endfor %}

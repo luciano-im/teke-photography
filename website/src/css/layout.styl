@@ -143,17 +143,28 @@ nav
 /*#### TAGS ################################################################*/
 
 .tags
-	position fixed
-	top 0
-	z-index 2
-	left 0
-	right 0
 	background-color white
 	ul
 		border-bottom 2px solid $orangeColor
-		padding .5em
+		// padding .5em
 		li
 			margin 0 .3em
+			padding .5em 0
+			&.burger
+				display none
+				margin 0
+				padding 0 1em
+				top 0
+				bottom 0
+				position absolute
+				&.open
+					background-color grey
+				a
+					font-size 1.1em
+					padding 0
+					transform translateY(50%)
+					&:hover
+						border none !important
 			a
 				color $fontColor
 				display block

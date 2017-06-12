@@ -84,6 +84,13 @@ document.onreadystatechange = function () {
 			return figure;
 		}
 
+		var burger = document.getElementsByClassName('burger')[0];
+		burger.addEventListener('click', function(event){
+			event.preventDefault();
+			toggleClass(this, 'open');
+		});
+
+
 		window.onscroll = function(){
 			if ((window.innerHeight + window.scrollY) == document.body.scrollHeight) {
 				addItemsAjax();
