@@ -9,10 +9,17 @@
     .grid-sizer, .grid-item
       width calc(100%/3)
 
-@media screen and (max-width: 830px)
-  .home
-    .grid-sizer, .grid-item
-      width calc(100%/2)
+// @media screen and (max-width: 830px)
+//   .home
+//     .grid-sizer, .grid-item
+//       width calc(100%/2)
+
+@media screen and (min-width: 769px)
+  header
+    //Set header visible
+    margin-left 0 !important
+    //Stick header to top
+    margin-top 0 !important
 
 @media screen and (max-width: 768px)
   header
@@ -35,3 +42,13 @@
           margin-left 4em !important
         &.burger
           display inline-block
+
+@media screen and (max-width: 600px)
+  .home
+    .grid-sizer, .grid-item
+      width calc(100%/2)
+
+@media screen and (max-width: 300px)
+  .home
+    .grid-sizer, .grid-item
+      width 100%
