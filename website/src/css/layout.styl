@@ -58,20 +58,28 @@ header
 					&:hover
 						transform translateY(-.2em)
 	&.burger
-		display none
+		// display none
 		margin 0
-		padding 0 1em
+		padding .6em 1em 0 1em
 		top 0
 		bottom 0
-		position absolute
-		&.open
-			background-color grey
+		// position absolute
+		.burger-btn
+			margin-right 1em
+			&.open
+				background-color grey
+		h1, h2, span, div
+			display inline-block
+		h1, span
+			font-size 1.5em
+		h2
+			font-size 1.3em
 		a
 			font-size 1.1em
 			padding 0
 			transform translateY(50%)
-			&:hover
-				border 1px solid transparent !important
+			// &:hover
+			// 	border 1px solid transparent !important
 
 nav
 	margin 1.5em 0
