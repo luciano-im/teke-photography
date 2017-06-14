@@ -1,6 +1,7 @@
 @media screen and (max-width: 1080px)
   header
-    width 230px
+    &.main
+      width 230px
 
   section
     width calc(100% - 230px)
@@ -9,23 +10,22 @@
     .grid-sizer, .grid-item
       width calc(100%/3)
 
-// @media screen and (max-width: 830px)
-//   .home
-//     .grid-sizer, .grid-item
-//       width calc(100%/2)
-
 @media screen and (min-width: 769px)
   header
-    //Set header visible
-    margin-left 0 !important
-    //Stick header to top
-    margin-top 0 !important
+    &.main
+      //Set header visible
+      margin-left 0 !important
+      //Stick header to top
+      margin-top 0 !important
 
 @media screen and (max-width: 768px)
   header
-    margin-left -250px
-    position fixed /* Stay in place */
-    padding 0
+    &.main
+      margin-left -250px
+      position fixed /* Stay in place */
+      padding 0
+    &.burger
+      display inline-block
 
   section
     width 100%
@@ -40,8 +40,6 @@
       li
         &.all
           margin-left 4em !important
-        &.burger
-          display inline-block
 
 @media screen and (max-width: 600px)
   .home

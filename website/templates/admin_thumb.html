@@ -3,8 +3,5 @@
 
 {% for o in obj %}
 	{% version o.image 'admin_thumbnail' as im %}
-		<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-	{% empty %}
-		<p>No image</p>
-	{% endthumbnail %}
+	<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
 {% endfor %}

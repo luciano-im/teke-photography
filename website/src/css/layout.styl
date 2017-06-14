@@ -1,64 +1,77 @@
 /*#### SIDEBAR ################################################################*/
 
 header
-	height 100% /* 100% Full-height */
-	z-index 100 /* Stay on top */
-	top 0
-	left 0
-	background-color white
-	overflow-x hidden /* Disable horizontal scroll */
-	overflow-y hidden
-	transition margin-left 0.5s /* 0.5 second transition effect to slide in the sidenav */
-
-	.description
-		font-size .8em
-		margin 3em 0 1.5em 0
-		text-align center
-
-	.logo
-		color $fontColor
-		text-align center
-		div
-			margin 10px 0
-			img
-				margin 0
-				position relative
-			//z-index 2 para posicionar sobre la foto de Diego
-			.camera
-				transition all 1s ease
-				z-index 2
-				&:hover
+	&.main
+		height 100% /* 100% Full-height */
+		z-index 100 /* Stay on top */
+		top 0
+		left 0
+		background-color white
+		overflow-x hidden /* Disable horizontal scroll */
+		overflow-y hidden
+		transition margin-left 0.5s /* 0.5 second transition effect to slide in the sidenav */
+		.description
+			font-size .8em
+			margin 3em 0 1.5em 0
+			text-align center
+		.logo
+			color $fontColor
+			text-align center
+			div
+				margin 10px 0
+				img
+					margin 0
+					position relative
+				//z-index 2 para posicionar sobre la foto de Diego
+				.camera
+					transition all 1s ease
+					z-index 2
+					&:hover
+						opacity 0
+						transform rotate(360deg)
+						+.teke
+							opacity 1
+				//z-index 1 para dejar la foto debajo del logo y uso margen izquierdo negativo para posicionarla
+				.teke
+					border-radius 50%
+					margin-left -130px
 					opacity 0
-					transform rotate(360deg)
-					+.teke
-						opacity 1
-			//z-index 1 para dejar la foto debajo del logo y uso margen izquierdo negativo para posicionarla
-			.teke
-				border-radius 50%
-				margin-left -130px
-				opacity 0
-				transition opacity .5s ease
-				width 130px
-				z-index 1
-		h2
-			//color $orangeColor
-			font-size 1.06em
-			margin .2em 0 .5em 0
-		span
-			border-top 1px solid $fontColor
-			font-size 1em
-
-	.social
-		font-size 1.5em
-		text-align center
-		li
-			margin .5em
-			a
-				color $orangeColor
-				display block
-				transition transform .5s ease
-				&:hover
-					transform translateY(-.2em)
+					transition opacity .5s ease
+					width 130px
+					z-index 1
+			h2
+				//color $orangeColor
+				font-size 1.06em
+				margin .2em 0 .5em 0
+			span
+				border-top 1px solid $fontColor
+				font-size 1em
+		.social
+			font-size 1.5em
+			text-align center
+			li
+				margin .5em
+				a
+					color $orangeColor
+					display block
+					transition transform .5s ease
+					&:hover
+						transform translateY(-.2em)
+	&.burger
+		display none
+		margin 0
+		padding 0 1em
+		top 0
+		bottom 0
+		position absolute
+		&.open
+			background-color grey
+		a
+			font-size 1.1em
+			padding 0
+			transform translateY(50%)
+			&:hover
+				border 1px solid transparent !important
 
 nav
 	margin 1.5em 0
@@ -150,22 +163,8 @@ nav
 		li
 			margin 0 .3em
 			padding .5em 0
-			&.burger
-				display none
-				margin 0
-				padding 0 1em
-				top 0
-				bottom 0
-				position absolute
-				&.open
-					background-color grey
-				a
-					font-size 1.1em
-					padding 0
-					transform translateY(50%)
-					&:hover
-						border none !important
 			a
+				border 1px solid transparent
 				color $fontColor
 				display block
 				font-size .7em

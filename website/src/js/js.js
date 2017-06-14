@@ -85,7 +85,7 @@ document.onreadystatechange = function () {
 		}
 
 		var burger = document.getElementsByClassName('burger')[0];
-		var header = document.getElementsByTagName('header')[0];
+		var header = document.getElementsByClassName('main')[0];
 		var tags = document.getElementsByClassName('tags')[0];
 		burger.addEventListener('click', function(event){
 			event.preventDefault();
