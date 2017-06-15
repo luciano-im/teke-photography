@@ -22,24 +22,26 @@
   header
     &.main
       margin-left -250px
+      margin-top 41px
       position fixed /* Stay in place */
       padding 0
     &.burger
       display inline-block
+      position fixed
+      z-index 2
 
   section
     width 100%
 
   .tags
+    left 0
+    margin-top 40px
     position fixed
+    right 0
     top 0
     z-index 2
-    left 0
-    right 0
     ul
-      li
-        &.all
-          margin-left 4em !important
+      border-top 1px solid $orangeColor
 
 @media screen and (max-width: 600px)
   .home

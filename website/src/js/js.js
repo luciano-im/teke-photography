@@ -84,23 +84,23 @@ document.onreadystatechange = function () {
 			return figure;
 		}
 
-		var burger = document.getElementsByClassName('burger')[0];
+		var burgerBtn = document.getElementsByClassName('burger-btn')[0];
 		var header = document.getElementsByClassName('main')[0];
 		var tags = document.getElementsByClassName('tags')[0];
-		burger.addEventListener('click', function(event){
+		burgerBtn.addEventListener('click', function(event){
 			event.preventDefault();
 			toggleClass(this, 'open');
-			if (hasClass(burger, 'open')) {
-				setMarginTopHeader();
+			if (hasClass(burgerBtn, 'open')) {
+				// setMarginTopHeader();
 				header.style.marginLeft = '0';
 			} else {
 				header.style.marginLeft = '-250px';
 			}
 		});
 
-		function setMarginTopHeader() {
-			header.style.marginTop = tags.clientHeight.toString() + 'px';
-		}
+		// function setMarginTopHeader() {
+		// 	header.style.marginTop = tags.clientHeight.toString() + 'px';
+		// }
 
 
 		window.onscroll = function(){
