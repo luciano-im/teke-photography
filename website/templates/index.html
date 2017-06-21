@@ -12,6 +12,15 @@
 {% block content %}
 <section class="home grid">
 	<div class="tags stamp">
+		{% if whereIAm.0 == 'tag' %}
+			{% for tag in tags %}
+				{% if tag.slug == whereIAm.1 %}
+					<button onclick="openTagsMenu()" class="tags-select">{{tag.name}}</button>
+				{% endif %}
+			{% endfor %}
+		{% else %}
+			<button onclick="openTagsMenu()" class="tags-select">Todo</button>
+		{% endif %}
 		<ul class="h-list">
 			{% if whereIAm.0 == 'tag' %}
 				<li class="all"><a href="/">TODO</a></li>
@@ -38,6 +47,20 @@
 {% endblock %}
 
 {% block scriptjs %}
+<script>
+	function openTagsMenu() {
+		document.querySelector(".tags ul").classList.toggle("show");
+	}
+
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function(event) {
+		if (!event.target.matches('.tags-select')) {
+			if (document.querySelector(".tags ul").classList.contains('show')) {
+				document.querySelector(".tags ul").classList.toggle("show");
+			}
+		}
+	}
+</script>
 <script>
 	var grid = document.querySelector('.grid');
 

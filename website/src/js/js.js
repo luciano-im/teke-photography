@@ -4,6 +4,8 @@
 document.onreadystatechange = function () {
 	if(document.readyState === 'interactive') {
 
+		// AJAX Functions //////////////////////////////////////////////////////////
+
 		function addItemsAjax() {
 			var request = new XMLHttpRequest();
 			request.open('GET', '/', true);
@@ -84,30 +86,34 @@ document.onreadystatechange = function () {
 			return figure;
 		}
 
+
+		// Responsive Burger Button ////////////////////////////////////////////////
+
 		var burgerBtn = document.getElementsByClassName('burger-btn')[0];
 		var header = document.getElementsByClassName('main')[0];
 		var tags = document.getElementsByClassName('tags')[0];
 		burgerBtn.addEventListener('click', function(event){
 			event.preventDefault();
 			toggleClass(this, 'open');
+			toggleClass(header.querySelector('.camera'), 'hide');
 			if (hasClass(burgerBtn, 'open')) {
-				// setMarginTopHeader();
 				header.style.marginLeft = '0';
 			} else {
 				header.style.marginLeft = '-250px';
 			}
 		});
 
-		// function setMarginTopHeader() {
-		// 	header.style.marginTop = tags.clientHeight.toString() + 'px';
-		// }
 
+		// OnScroll Functionality //////////////////////////////////////////////////
 
 		window.onscroll = function(){
 			if ((window.innerHeight + window.scrollY) == document.body.scrollHeight) {
 				addItemsAjax();
 			}
 		}
+
+
+		// Helper Functions ////////////////////////////////////////////////////////
 
 		function findParent(el, cls) {
 			while ((el = el.parentElement) && !el.classList.contains(cls));

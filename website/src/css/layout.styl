@@ -26,7 +26,9 @@ header
 				.camera
 					transition all 1s ease
 					z-index 2
-					&:hover
+					&.hide
+						transition all 3s ease-in-out
+					&:hover, &.hide
 						opacity 0
 						transform rotate(360deg)
 						+.teke
@@ -72,7 +74,7 @@ header
 			a
 				display block
 			&.open
-				background-color grey
+				background-color $orangeColor
 		h1, span, div
 			display inline-block
 			vertical-align middle
@@ -100,16 +102,16 @@ nav
 		&.active
 			a
 				color black
-				.fa-long-arrow-right
+				.arrow-right
 					opacity 1
 		a
 			color $linkColor
 			display block
 			font-size 1.2em
 			padding .3em 0 .5em
-			.fa-long-arrow-right
-				color $orangeColor
+			.arrow-right
 				opacity 0
+				width 19px
 
 /*#### HOME ################################################################*/
 
@@ -173,8 +175,9 @@ nav
 
 .tags
 	background-color white
+	border-bottom 2px solid $orangeColor
 	ul
-		border-bottom 2px solid $orangeColor
+		background-color white
 		li
 			margin 0 .3em
 			padding .5em 0
@@ -190,6 +193,19 @@ nav
 					color $orangeColor
 				&:not(.selected):hover
 					border-bottom 1px dashed $orangeColor
+	.tags-select
+		background white url('../img/down-arrow.png') no-repeat 93% center
+		background-size 10px auto
+		border 1px solid $orangeColor
+		cursor pointer
+		display none
+		font-size .7em
+		margin 1em .5em .5em .5em
+		outline 0
+		padding .5em .8em
+		padding-right 2em
+		text-align left
+		text-transform uppercase
 
 /*#### LIGHTBOX ################################################################*/
 
