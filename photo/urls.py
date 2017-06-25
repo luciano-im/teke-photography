@@ -4,12 +4,16 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.views.static import serve
 
 from website import views
 
 from filebrowser.sites import site
 
 urlpatterns = [
+    # static.serve debe ser usado solo en dev environment Fuck!
+	url(r'^static/(?P<path>.*)$',serve,{'document_root': settings.STATIC_ROOT}),
+
     url(r'^admin/filebrowser/', include(site.urls)), # filebrowser URLS
     url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', admin.site.urls),

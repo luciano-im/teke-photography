@@ -39,6 +39,7 @@ def get_photos_response(request, tag):
 			photos = Photos.objects.filter(photo__tags__slug = tag).values('id')
 		else:
 			photos = Photos.objects.values('id')
+			print photos
 		random_ids = get_random_list(photos)
 		response = random_ids[:settings.ITEMS_PER_PAGE]
 		request.session['ids'] = random_ids[settings.ITEMS_PER_PAGE:]
