@@ -26,7 +26,7 @@ def get_ajax_response(request):
 		pic = {}
 		pic['original'] = photo.image.url
 		# Media URL + Version's folder + Version file
-		pic['thumb'] = settings.MEDIA_URL + photo.image.versions_basedir + '/' + photo.image.version_name('thumbnail')
+		pic['thumb'] = settings.MEDIA_URL + photo.image.version_path('thumbnail')
 		data.append(pic)
 
 	return data
@@ -39,7 +39,6 @@ def get_photos_response(request, tag):
 			photos = Photos.objects.filter(photo__tags__slug = tag).values('id')
 		else:
 			photos = Photos.objects.values('id')
-			print photos
 		random_ids = get_random_list(photos)
 		response = random_ids[:settings.ITEMS_PER_PAGE]
 		request.session['ids'] = random_ids[settings.ITEMS_PER_PAGE:]
