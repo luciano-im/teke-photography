@@ -74,3 +74,6 @@ def tag(request, tag):
 
 def setup(request):
 	return render(request, 'setup.html')
+
+def contact(request):
+	return render(request, 'contact.html')

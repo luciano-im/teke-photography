@@ -27,7 +27,7 @@ header
 					transition all 1s ease
 					z-index 2
 					&.hide
-						transition all 3s ease-in-out
+						transition all 1s ease-in-out
 					&:hover, &.hide
 						opacity 0
 						transform rotate(360deg)
@@ -149,17 +149,66 @@ nav
 				transition all .3s ease-in-out
 				z-index 1
 
-/*#### SETUP ################################################################*/
+/*#### SETUP / CONTACT ##########################################################*/
+
+.setup, .contact
+	.description
+		padding 1em
+
+.contact
+	.description
+		& :not(.section-heading)
+			text-align center
+		.hello
+			font-size 2em
+		.copy
+			font-size 1.3em
+			margin-top .8em
+			&:nth-child(4)
+				color $linkColor
+				font-size 1.2em
+				line-height 1.5em
+				margin-bottom .5em
+			.email
+				border-bottom 1px dashed transparent
+				color $orangeColor
+				&:hover
+					border-bottom 1px dashed $orangeColor
+		.address
+			color $orangeColor
+			font-size 2em
+			letter-spacing .4em
+			line-height 1.4em
+			span
+				display block
+		.tel
+			font-size 1.2em
+			span
+				color $orangeColor
+		.separator
+			color #ddd
+			font-size 5em
+			letter-spacing -.32em
+			margin-left -.32em
+		.social-links
+			font-size 1.2em
+			margin-top 1.5em
+		ul
+			margin-top 1em
+			li
+				&:not(:first-child)
+					margin-left 1em
+				a
+					color $orangeColor
+					font-size 2em
 
 .setup
-	text-align center
 	img
 		display inline-block
 		height auto
 		margin .5em 0
 		width 45%
 	.description
-		padding 1em
 		text-align left
 		ul
 			border-left 4px solid grey
