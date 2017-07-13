@@ -153,9 +153,15 @@ nav
 
 .setup, .contact
 	.description
-		padding 1em
+		padding 2em
+		border 2em solid transparent
+		background linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)) padding-box,
+							 url('../img/contact-bk.jpg') border-box 0 / cover
+	.section-heading
+		padding-top 1em
 
 .contact
+	background-size cover
 	.description
 		& :not(.section-heading)
 			text-align center
@@ -186,10 +192,11 @@ nav
 			span
 				color $orangeColor
 		.separator
-			color #ddd
+			color white
 			font-size 5em
 			letter-spacing -.32em
 			margin-left -.32em
+			text-shadow 1px 1px 5px #ddd
 		.social-links
 			font-size 1.2em
 			margin-top 1.5em
