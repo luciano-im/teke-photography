@@ -87,11 +87,10 @@ document.onreadystatechange = function () {
 		}
 
 
-		// Responsive Burger Button ////////////////////////////////////////////////
+		// Responsive Burger Button & Tags /////////////////////////////////////////
 
 		var burgerBtn = document.getElementsByClassName('burger-btn')[0];
 		var header = document.getElementsByClassName('main')[0];
-		var tags = document.getElementsByClassName('tags')[0];
 		burgerBtn.addEventListener('click', function(event){
 			event.preventDefault();
 			toggleClass(this, 'open');
@@ -102,6 +101,32 @@ document.onreadystatechange = function () {
 				header.style.marginLeft = '-250px';
 			}
 		});
+
+		var tags = document.getElementsByClassName('tags')[0];
+		var tagsSelect = tags.querySelectorAll('.tags-select');
+		for(var i=0; i<tagsSelect.length; i++) {
+			tagsSelect[i].addEventListener('click', function(event) {
+				tags.querySelector("ul").classList.toggle("show");
+			});
+		}
+
+		window.onclick = function(event) {
+			// Close tags dropdown if the user clicks outside of it
+			if (!event.target.matches('.tags-select')) {
+				if (tags.querySelector("ul").classList.contains('show')) {
+					tags.querySelector("ul").classList.toggle("show");
+				}
+			}
+			// Close burger menu if the user clicks outside of it
+			if (!findParent(event.target, 'burger-btn') && !findParent(event.target, 'main')) {
+				console.log('trueee');
+				if (hasClass(burgerBtn, 'open')) {
+					toggleClass(burgerBtn, 'open');
+					toggleClass(header.querySelector('.camera'), 'hide');
+					header.style.marginLeft = '-250px';
+				}
+			}
+		}
 
 
 		// OnScroll Functionality //////////////////////////////////////////////////
