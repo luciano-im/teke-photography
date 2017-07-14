@@ -58,13 +58,47 @@
     .tags-select
       display inline-block
 
-  .tags, .setup
+  .tags, .setup, .contact
     margin-top 40px
+
+  .setup, .contact
+    .section-heading
+      padding .5em .3em 0 .3em
+    .description
+      img
+        display inline-block
+        height auto
+        width 100%
+  .contact
+    .description
+      font-size .9em
 
 @media screen and (max-width: 600px)
   .home
     .grid-sizer, .grid-item
       width calc(100%/2)
+
+@media screen and (max-width: 425px)
+  .contact
+    .description
+      font-size .8em
+
+@media screen and (max-width: 375px)
+  .setup, .contact
+    .description
+      border none
+      padding 1em
+  .contact
+    .description
+      font-size .7em
+
+@media screen and (max-width: 320px)
+  header
+    &.burger
+      h1
+        font-size 1.4em
+      span
+        font-size .9em
 
 @media screen and (max-width: 300px)
   .home
