@@ -27,8 +27,9 @@ def get_ajax_response(request):
 	for photo in photos:
 		pic = {}
 		pic['original'] = photo.image.url
-		# Media URL + Version's folder + Version file
-		pic['thumb'] = settings.MEDIA_URL + photo.image.version_path('thumbnail')
+		# Retrieve version image (it will generate the version if not exist)
+		v = photo.image.version_generate('thumbnail')
+		pic['thumb'] = v.url
 		data.append(pic)
 
 	return data
