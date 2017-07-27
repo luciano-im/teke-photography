@@ -15,7 +15,6 @@ document.onreadystatechange = function () {
 				if (request.status >= 200 && request.status < 400) {
 					// Success!
 					var data = JSON.parse(request.response);
-					//console.log(data);
 					if (data.length > 0) {
 						var items = getItems(data);
 						var fragment = getFragment(data);
@@ -31,6 +30,8 @@ document.onreadystatechange = function () {
 		}
 
 		function loadImages(fragment, items) {
+			window.removeEventListener('scroll', ajaxScroll, false);
+
 			// append elements to container
 			grid.appendChild(fragment);
 
@@ -43,6 +44,10 @@ document.onreadystatechange = function () {
 				parent.style.display = '';
 				// masonry does its thing
 				msnry.appended(parent);
+			});
+
+			imgLoad.on('always', function(instance) {
+				window.addEventListener('scroll', ajaxScroll, false);
 			});
 		}
 
@@ -131,12 +136,13 @@ document.onreadystatechange = function () {
 
 		// OnScroll Functionality //////////////////////////////////////////////////
 
-		window.onscroll = function(){
+		var ajaxScroll = function(event) {
 			if ((window.innerHeight + window.scrollY) == document.body.scrollHeight) {
 				addItemsAjax();
 			}
-		}
+		};
 
+		window.addEventListener('scroll', ajaxScroll, false);
 
 		// Helper Functions ////////////////////////////////////////////////////////
 
