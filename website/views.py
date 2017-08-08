@@ -78,3 +78,7 @@ def setup(request):
 
 def contact(request):
 	return render(request, 'contact.html')
+
+def test(request):
+	response = get_photos_response(request, None)
+	return render(request, 'test.html', {'photos':response['photos'], 'tags':Photo.tags.all()})

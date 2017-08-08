@@ -1,0 +1,837 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FileObject &mdash; Django FileBrowser 3.9.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="https://media.readthedocs.org/css/sphinx_rtd_theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Django FileBrowser 3.9.1 documentation" href="index.html"/>
+        <link rel="up" title="API" href="api.html"/>
+        <link rel="next" title="Fields &amp; Widgets" href="fieldswidgets.html"/>
+        <link rel="prev" title="FileListing" href="filelisting.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://django-filebrowser.readthedocs.io/en/latest/fileobject.html" />
+
+<link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'fileobject' 		
+READTHEDOCS_DATA['source_suffix'] = '.rst'
+</script>
+
+<script type="text/javascript" src="_static/readthedocs-dynamic-include.js"></script>
+
+<!-- end RTD <extrahead> --></head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Django FileBrowser
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="filelisting.html">FileListing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FileObject</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fieldswidgets.html">Fields &amp; Widgets</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="admin.html">Admin Interface</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="versions.html">Versions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Django FileBrowser</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="api.html">API</a> &raquo;</li>
+        
+      <li>FileObject</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/sehmaschine/django-filebrowser/blob/master/docs/fileobject.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fileobject">
+<span id="id1"></span><h1>FileObject<a class="headerlink" href="#fileobject" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="FileObject">
+<em class="property">class </em><code class="descname">FileObject</code><span class="sig-paren">(</span><em>path</em>, <em>site=None</em><span class="sig-paren">)</span><a class="headerlink" href="#FileObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>An object representing a media file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> &#8211; Relative path to a location within <cite>site.storage.location</cite>.</li>
+<li><strong>site</strong> &#8211; An optional FileBrowser Site.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">filebrowser.sites</span> <span class="kn">import</span> <span class="n">site</span>
+<span class="kn">from</span> <span class="nn">filebrowser.base</span> <span class="kn">import</span> <span class="n">FileObject</span>
+<span class="n">fileobject</span> <span class="o">=</span> <span class="n">FileObject</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">site</span><span class="o">.</span><span class="n">directory</span><span class="p">,</span><span class="s2">&quot;testfolder&quot;</span><span class="p">,</span><span class="s2">&quot;testimage.jpg&quot;</span><span class="p">))</span>
+<span class="n">version</span> <span class="o">=</span> <span class="n">FileObject</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fileobject</span><span class="o">.</span><span class="n">versions_basedir</span><span class="p">,</span> <span class="s2">&quot;testfolder&quot;</span><span class="p">,</span> <span class="s2">&quot;testimage_medium.jpg&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="initial-attributes">
+<h3>Initial Attributes<a class="headerlink" href="#initial-attributes" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="path">
+<code class="descname">path</code><a class="headerlink" href="#path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path relative to a storage location (including <code class="docutils literal"><span class="pre">site.directory</span></code>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">path</span>
+<span class="go">&#39;uploads/testfolder/testimage.jpg&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="head">
+<code class="descname">head</code><a class="headerlink" href="#head" title="Permalink to this definition">¶</a></dt>
+<dd><p>The directory name of pathname <code class="docutils literal"><span class="pre">path</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">head</span>
+<span class="go">&#39;uploads/testfolder&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="filename">
+<code class="descname">filename</code><a class="headerlink" href="#filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the file (including the extension) or name of the folder:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">filename</span>
+<span class="go">&#39;testimage.jpg&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="filename_lower">
+<code class="descname">filename_lower</code><a class="headerlink" href="#filename_lower" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lower type of <code class="docutils literal"><span class="pre">filename</span></code>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="filename_root">
+<code class="descname">filename_root</code><a class="headerlink" href="#filename_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filename without extension:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">filename_root</span>
+<span class="go">&#39;testimage&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="extension">
+<code class="descname">extension</code><a class="headerlink" href="#extension" title="Permalink to this definition">¶</a></dt>
+<dd><p>File extension, including the dot. With a folder, the extensions is <code class="docutils literal"><span class="pre">None</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">extension</span>
+<span class="go">&#39;.jpg&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mimetype">
+<code class="descname">mimetype</code><a class="headerlink" href="#mimetype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mimetype, based on <a class="reference external" href="http://docs.python.org/library/mimetypes.html">http://docs.python.org/library/mimetypes.html</a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">mimetype</span>
+<span class="go">(&#39;image/jpeg&#39;, None)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="general-attributes">
+<h3>General Attributes<a class="headerlink" href="#general-attributes" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="filetype">
+<code class="descname">filetype</code><a class="headerlink" href="#filetype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type of the file, as defined with <code class="docutils literal"><span class="pre">EXTENSIONS</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">filetype</span>
+<span class="go">&#39;Image&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="filesize">
+<code class="descname">filesize</code><a class="headerlink" href="#filesize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filesize in Bytes:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">filesize</span>
+<span class="go">870037L</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="date">
+<code class="descname">date</code><a class="headerlink" href="#date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Date, based on <code class="docutils literal"><span class="pre">time.mktime</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">date</span>
+<span class="go">1299760347.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="datetime">
+<code class="descname">datetime</code><a class="headerlink" href="#datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Datetime object:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">datetime</span>
+<span class="go">datetime.datetime(2011, 3, 10, 13, 32, 27)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exists">
+<code class="descname">exists</code><a class="headerlink" href="#exists" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal"><span class="pre">True</span></code>, if the path exists, <code class="docutils literal"><span class="pre">False</span></code> otherwise:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">exists</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="path-and-url-attributes">
+<h3>Path and URL attributes<a class="headerlink" href="#path-and-url-attributes" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt>
+<code class="descname">path</code></dt>
+<dd><p>Path relative to a storage location (including <code class="docutils literal"><span class="pre">site.directory</span></code>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">path</span>
+<span class="go">&#39;uploads/testfolder/testimage.jpg&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="path_relative_directory">
+<code class="descname">path_relative_directory</code><a class="headerlink" href="#path_relative_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path relative to <code class="docutils literal"><span class="pre">site.directory</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">path_relative_directory</span>
+<span class="go">&#39;testfolder/testimage.jpg&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="path_full">
+<code class="descname">path_full</code><a class="headerlink" href="#path_full" title="Permalink to this definition">¶</a></dt>
+<dd><p>Absolute server path (based on <code class="docutils literal"><span class="pre">storage.path</span></code>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">path_full</span>
+<span class="go">&#39;/absolute/path/to/server/location/testfolder/testimage.jpg&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dirname">
+<code class="descname">dirname</code><a class="headerlink" href="#dirname" title="Permalink to this definition">¶</a></dt>
+<dd><div class="versionadded">
+<p><span class="versionmodified">New in version 3.4.</span></p>
+</div>
+<p>The directory (not including <code class="docutils literal"><span class="pre">site.directory</span></code>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">dirname</span>
+<span class="go">&#39;testfolder&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="url">
+<code class="descname">url</code><a class="headerlink" href="#url" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL for the file/folder (based on <code class="docutils literal"><span class="pre">storage.url</span></code>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">url</span>
+<span class="go">&#39;/media/uploads/testfolder/testimage.jpg&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="image-attributes">
+<h3>Image attributes<a class="headerlink" href="#image-attributes" title="Permalink to this headline">¶</a></h3>
+<p>The image attributes are only useful if the <code class="docutils literal"><span class="pre">FileObject</span></code> represents an image.</p>
+<dl class="attribute">
+<dt id="dimensions">
+<code class="descname">dimensions</code><a class="headerlink" href="#dimensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image dimensions as a tuple:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">dimensions</span>
+<span class="go">(1000, 750)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="width">
+<code class="descname">width</code><a class="headerlink" href="#width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image width in px:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">width</span>
+<span class="go">1000</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="height">
+<code class="descname">height</code><a class="headerlink" href="#height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image height in px:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">height</span>
+<span class="go">750</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aspectratio">
+<code class="descname">aspectratio</code><a class="headerlink" href="#aspectratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aspect ratio (float format):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">aspectratio</span>
+<span class="go">1.33534908</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="orientation">
+<code class="descname">orientation</code><a class="headerlink" href="#orientation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image orientation, either <code class="docutils literal"><span class="pre">Landscape</span></code> or <code class="docutils literal"><span class="pre">Portrait</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">orientation</span>
+<span class="go">&#39;Landscape&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="folder-attributes">
+<h3>Folder attributes<a class="headerlink" href="#folder-attributes" title="Permalink to this headline">¶</a></h3>
+<p>The folder attributes make sense when the <code class="docutils literal"><span class="pre">FileObject</span></code> represents a directory (not a file).</p>
+<dl class="attribute">
+<dt id="is_folder">
+<code class="descname">is_folder</code><a class="headerlink" href="#is_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal"><span class="pre">True</span></code>, if path is a folder:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">is_folder</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="is_empty">
+<code class="descname">is_empty</code><a class="headerlink" href="#is_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal"><span class="pre">True</span></code>, if the folder is empty. <code class="docutils literal"><span class="pre">False</span></code> if the folder is not empty or the <code class="docutils literal"><span class="pre">FileObject</span></code> is not a folder:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">is_empty</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="version-attributes">
+<h3>Version attributes<a class="headerlink" href="#version-attributes" title="Permalink to this headline">¶</a></h3>
+<dl class="attribute">
+<dt id="is_version">
+<code class="descname">is_version</code><a class="headerlink" href="#is_version" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal"><span class="pre">true</span></code> if the File is a <code class="docutils literal"><span class="pre">version</span></code> of another File:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">is_version</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">version</span><span class="o">.</span><span class="n">is_version</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="versions_basedir">
+<code class="descname">versions_basedir</code><a class="headerlink" href="#versions_basedir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The relative path (from storage location) to the main versions folder. Either <code class="docutils literal"><span class="pre">VERSIONS_BASEDIR</span></code> or <code class="docutils literal"><span class="pre">site.directory</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">versions_basedir</span>
+<span class="go">&#39;_versions&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">version</span><span class="o">.</span><span class="n">versions_basedir</span>
+<span class="go">&#39;_versions&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="original">
+<code class="descname">original</code><a class="headerlink" href="#original" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the original FileObject:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">original</span>
+<span class="go">&lt;FileObject: uploads/testfolder/testimage.jpg&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">version</span><span class="o">.</span><span class="n">original</span>
+<span class="go">&lt;FileObject: uploads/testfolder/testimage.jpg&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="original_filename">
+<code class="descname">original_filename</code><a class="headerlink" href="#original_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the filename of an original image from a version:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">original_filename</span>
+<span class="go">&#39;testimage.jpg&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">version</span><span class="o">.</span><span class="n">original_filename</span>
+<span class="go">&#39;testimage.jpg&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="version-methods">
+<h3>Version methods<a class="headerlink" href="#version-methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="versions">
+<code class="descname">versions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#versions" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all filenames based on <code class="docutils literal"><span class="pre">VERSIONS</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">versions</span><span class="p">()</span>
+<span class="go">[&#39;_versions/testfolder/testimage_admin_thumbnail.jpg&#39;,</span>
+<span class="go">&#39;_versions/testfolder/testimage_thumbnail.jpg&#39;,</span>
+<span class="go">&#39;_versions/testfolder/testimage_small.jpg&#39;,</span>
+<span class="go">&#39;_versions/testfolder/testimage_medium.jpg&#39;,</span>
+<span class="go">&#39;_versions/testfolder/testimage_big.jpg&#39;,</span>
+<span class="go">&#39;_versions/testfolder/testimage_large.jpg&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">version</span><span class="o">.</span><span class="n">versions</span><span class="p">()</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The versions are not being generated.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="admin_versions">
+<code class="descname">admin_versions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#admin_versions" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all filenames based on <code class="docutils literal"><span class="pre">ADMIN_VERSIONS</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">admin_versions</span><span class="p">()</span>
+<span class="go">[&#39;_versions/testfolder/testimage_thumbnail.jpg&#39;,</span>
+<span class="go">&#39;_versions/testfolder/testimage_small.jpg&#39;,</span>
+<span class="go">&#39;_versions/testfolder/testimage_medium.jpg&#39;,</span>
+<span class="go">&#39;_versions/testfolder/testimage_big.jpg&#39;,</span>
+<span class="go">&#39;_versions/testfolder/testimage_large.jpg&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">version</span><span class="o">.</span><span class="n">admin_versions</span><span class="p">()</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The versions are not being generated.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="version_name">
+<code class="descname">version_name</code><span class="sig-paren">(</span><em>version_suffix</em>, <em>extra_options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#version_name" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>version_suffix</strong> &#8211; A suffix to compose the version name accordingly to
+the <a class="reference internal" href="settings.html#settingsversions-version-namer"><span class="std std-ref">VERSION_NAMER</span></a> in use.</li>
+<li><strong>extra_options</strong> &#8211; An optional <code class="docutils literal"><span class="pre">dict</span></code> to be used in the version generation.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Get the filename for a version:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">version_name</span><span class="p">(</span><span class="s2">&quot;medium&quot;</span><span class="p">)</span>
+<span class="go">&#39;testimage_medium.jpg&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The version is not being generated.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files names can be customized using <a class="reference internal" href="settings.html#settingsversions-version-namer"><span class="std std-ref">VERSION_NAMER</span></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="version_path">
+<code class="descname">version_path</code><span class="sig-paren">(</span><em>version_suffix</em>, <em>extra_options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#version_path" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>version_suffix</strong> &#8211; A suffix to compose the version name accordingly to
+the <a class="reference internal" href="settings.html#settingsversions-version-namer"><span class="std std-ref">VERSION_NAMER</span></a> in use.</li>
+<li><strong>extra_options</strong> &#8211; An optional <code class="docutils literal"><span class="pre">dict</span></code> to be used in the version generation.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Get the path for a version:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">version_path</span><span class="p">(</span><span class="s2">&quot;medium&quot;</span><span class="p">)</span>
+<span class="go">&#39;_versions/testfolder/testimage_medium.jpg&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The version is not being generated.</p>
+</div>
+</dd></dl>
+
+<span class="target" id="method-version-generate"></span><dl class="method">
+<dt id="version_generate">
+<code class="descname">version_generate</code><span class="sig-paren">(</span><em>version_suffix</em>, <em>extra_options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#version_generate" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>version_suffix</strong> &#8211; A suffix to compose the version name accordingly to
+the <a class="reference internal" href="settings.html#settingsversions-version-namer"><span class="std std-ref">VERSION_NAMER</span></a> in use.</li>
+<li><strong>extra_options</strong> &#8211; An optional <code class="docutils literal"><span class="pre">dict</span></code> to be used in the version generation.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>An image version is generated by passing the source image through a series
+of <a class="reference internal" href="versions.html#versions-custom-processors"><span class="std std-ref">image processors</span></a>. Each processor
+may alter the image, often dependent on the options it receives.</p>
+<p>The options used in the processors chain is composed of the <a class="reference internal" href="versions.html#versions"><span class="std std-ref">version
+definition</span></a>, if <code class="docutils literal"><span class="pre">version_suffix</span></code> is a key in
+<a class="reference internal" href="settings.html#settingsversions-versions"><span class="std std-ref">VERSIONS</span></a>, plus any <code class="docutils literal"><span class="pre">extra_options</span></code> provided. If
+no version definition was found and no extra options are provided, an empty
+dict will be used. A key in <code class="docutils literal"><span class="pre">extra_options</span></code> will take precedence over the
+version definition.</p>
+<p>Generate a version:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fileobject</span><span class="o">.</span><span class="n">version_generate</span><span class="p">(</span><span class="s2">&quot;medium&quot;</span><span class="p">)</span>
+<span class="go">&lt;FileObject: uploads/testfolder/testimage_medium.jpg&gt;</span>
+</pre></div>
+</div>
+<p>Please note that a version is only generated, if it does not already exist or if the original image is newer than the existing version.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-methods">
+<h3>Delete methods<a class="headerlink" href="#delete-methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the <code class="docutils literal"><span class="pre">File</span></code> or <code class="docutils literal"><span class="pre">Folder</span></code> from the server.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If you delete a <strong>Folder</strong>, all items within the folder are being deleted.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="delete_versions">
+<code class="descname">delete_versions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delete_versions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all <code class="docutils literal"><span class="pre">VERSIONS</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="delete_admin_versions">
+<code class="descname">delete_admin_versions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delete_admin_versions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all <code class="docutils literal"><span class="pre">ADMIN_VERSIONS</span></code>.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fieldswidgets.html" class="btn btn-neutral float-right" title="Fields &amp; Widgets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="filelisting.html" class="btn btn-neutral" title="FileListing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Patrick Kranzlmueller.
+      
+        <span class="commit">
+          Revision <code>06a00689</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/3.9.1/">3.9.1</a></dd>
+        
+          <dd><a href="/en/3.8.1/">3.8.1</a></dd>
+        
+          <dd><a href="/en/3.7.2/">3.7.2</a></dd>
+        
+          <dd><a href="/en/3.6.4/">3.6.4</a></dd>
+        
+          <dd><a href="/en/3.5.8/">3.5.8</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//readthedocs.org/projects/django-filebrowser/downloads/pdf/latest/">pdf</a></dd>
+        
+          <dd><a href="//readthedocs.org/projects/django-filebrowser/downloads/htmlzip/latest/">htmlzip</a></dd>
+        
+          <dd><a href="//readthedocs.org/projects/django-filebrowser/downloads/epub/latest/">epub</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/django-filebrowser/?fromdocs=django-filebrowser">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/django-filebrowser/?fromdocs=django-filebrowser">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.9.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/underscore.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/doctools.js"></script>
+      <script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-doc-embed.js"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
