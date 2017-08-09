@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.humanize',
     'sorl.thumbnail',
     'taggit',
     'mathfilters',
@@ -117,11 +116,6 @@ TIME_ZONE = 'America/Buenos_Aires'
 USE_I18N = True
 
 USE_L10N = True
-
-# This work if USE_L10N is set to True
-# USE_THOUSAND_SEPARATOR = True
-# THOUSAND_SEPARATOR = ','
-# DECIMAL_SEPARATOR = '.'
 
 USE_TZ = True
 
