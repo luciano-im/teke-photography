@@ -136,13 +136,13 @@ document.onreadystatechange = function () {
 
 		// OnScroll Functionality //////////////////////////////////////////////////
 
-		var ajaxScroll = function(event) {
-			if ((window.innerHeight + window.scrollY) == document.body.scrollHeight) {
-				addItemsAjax();
-			}
-		};
+		// var ajaxScroll = function(event) {
+		// 	if ((window.innerHeight + window.scrollY) == document.body.scrollHeight) {
+		// 		addItemsAjax();
+		// 	}
+		// };
 
-		window.addEventListener('scroll', ajaxScroll, false);
+		// window.addEventListener('scroll', ajaxScroll, false);
 
 		// Helper Functions ////////////////////////////////////////////////////////
 
