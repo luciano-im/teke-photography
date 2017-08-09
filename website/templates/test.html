@@ -417,30 +417,35 @@
       </div>
     </div>
     <script type="text/javascript">
-        var wrapper = querySelector('.isotope-wrapper');
-        $('.isotope-wrapper')
-          .each(function(){
+        var isotopeBox = document.querySelector('.isotope-wrapper');
+        var isotope = new Isotope(isotopeBox, {
+          itemSelector: '.isotope-item',
+          layoutMode: 'masonry'
+        });
 
-              var $isotope = $('.isotope-box', this);
-              var $filterCheckboxes = $('input[type="radio"]', this);
-
-              var filter = function(){
-                var type = $filterCheckboxes.filter(':checked').data('type') || '*';
-                if(type !== '*'){
-                  type = '[data-type="'+ type +'"]';
-                }
-                $isotope.isotope({ filter: type });
-              };
-
-              $isotope.isotope({
-                itemSelector: '.isotope-item',
-                layoutMode: 'masonry'
-              });
-
-              $(this).on('change', filter);
-              filter();
-          })
-        ;
+        // $('.isotope-wrapper')
+        //   .each(function(){
+        //
+        //       var $isotope = $('.isotope-box', this);
+        //       var $filterCheckboxes = $('input[type="radio"]', this);
+        //
+        //       var filter = function(){
+        //         var type = $filterCheckboxes.filter(':checked').data('type') || '*';
+        //         if(type !== '*'){
+        //           type = '[data-type="'+ type +'"]';
+        //         }
+        //         $isotope.isotope({ filter: type });
+        //       };
+        //
+        //       $isotope.isotope({
+        //         itemSelector: '.isotope-item',
+        //         layoutMode: 'masonry'
+        //       });
+        //
+        //       $(this).on('change', filter);
+        //       filter();
+        //   })
+        // ;
     </script>
     <script src="{% static "assets/js/jsOnlyLightbox-0.5.6/js/lightbox.js" %}" type="text/javascript"></script>
     <script>
