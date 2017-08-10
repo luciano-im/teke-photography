@@ -117,23 +117,27 @@ nav
 	transition margin-left .5s
 	// .grid-sizer, .grid-item
 	// 	width 25%
-	figure
-		// background-color black
-		// display inline-block
-		// margin 0
+	figure.isotope-item
 		// position relative
+		// width 23.8%
+		// height auto
+		// margin .6%
 		&:hover
 			a:after
 				opacity .7
 		a
-			// display block
+			// content ''
+			// display inline-block
+			// height 100.5%
 			img
-				//display block
-				// height auto
-				// vertical-align middle
-				transition all .3s ease-in-out
+				// position: absolute
+				// top 0
+				// left 0
 				// width 100%
-				//-webkit-backface-visibility: hidden;
+				// height 100%
+				// display block
+				transition all .3s ease-in-out
+				// -webkit-backface-visibility hidden
 			&:after
 				//background $orangeColor
 				background #000
@@ -230,6 +234,7 @@ nav
 .tags
 	background-color white
 	border-bottom 2px solid $orangeColor
+	margin-bottom .5%
 	ul
 		background-color white
 		li
