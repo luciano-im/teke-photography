@@ -7,52 +7,13 @@
 
 {% block head %}
 <link rel="stylesheet" href="{% static "assets/js/jsOnlyLightbox-0.5.6/css/lightbox.min.css" %}">
-<!-- <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
-<script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script> -->
 <script>
 	window.lazySizesConfig = window.lazySizesConfig || {};
 	//only for demo in production I would use normal expand option
 	window.lazySizesConfig.expand = 90;
 </script>
 <script src="//cdn.jsdelivr.net/g/lazysizes(lazysizes.min.js)" async=""></script>
-<script src="//cdn.jsdelivr.net/g/jquery@2.1.3(jquery.min.js),isotope@2.0.0(jquery.isotope.min.js)"></script>
-
-<style media="screen">
-	*, :before, :after {
-    	box-sizing: border-box;
-	}
-
-	.isotope-item {
-		position: relative;
-		width: 23.8%;
-		height: auto;
-		margin: .6%;
-	}
-
-	.isotope-item a {
-		content: '';
-		display: inline-block;
-		height: 100.5%;
-	}
-
-	.isotope-item img {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		display: block;
-	}
-
-	.lazyload {
-		background: #f7f7f7;
-	}
-
-	.lazyloading {
-		background: #f7f7f7 url(//afarkas.github.io/lazysizes/assets/imgs/loader.gif) no-repeat center;
-		min-height: 60px;
-	}
-</style>
+<script src="//cdn.jsdelivr.net/g/isotope@2.0.0(jquery.isotope.min.js)"></script>
 {% endblock %}
 
 {% block content %}
@@ -61,12 +22,10 @@
 		{% if whereIAm.0 == 'tag' %}
 			{% for tag in tags %}
 				{% if tag.slug == whereIAm.1 %}
-					<!--<button onclick="openTagsMenu()" class="tags-select">{{tag.name}}</button>-->
 					<button class="tags-select">{{tag.name}}</button>
 				{% endif %}
 			{% endfor %}
 		{% else %}
-			<!--<button onclick="openTagsMenu()" class="tags-select">Todo</button>-->
 			<button class="tags-select">Todo</button>
 		{% endif %}
 		<ul class="h-list">
@@ -84,14 +43,10 @@
 		</ul>
 	</div>
 	<div class="isotope-box">
-		<!-- <div class="grid-sizer"></div> -->
 		{% for i in photos %}
 			{% version i.image 'thumbnail' as thumb %}
-			<!-- <figure class="grid-item" style="display:none;"> -->
 			<figure class="isotope-item">
-				<!-- <a href="{{i.image.url}}" data-jslghtbx="{{i.image.url}}" data-jslghtbx-group="mygroup1"> -->
 				<a href="{{i.image.url}}" style="padding-top:{{thumb.height|div:thumb.width|mul:100|unlocalize}}%;" data-jslghtbx="{{i.image.url}}" data-jslghtbx-group="mygroup1">
-					<!-- <img src="{% version i.image 'thumbnail' %}" alt=""> -->
 					<img data-src="{{thumb.url}}" class="lazyload" alt="">
 				</a>
 			</figure>
@@ -101,12 +56,11 @@
 {% endblock %}
 
 {% block scriptjs %}
-<!-- <script>
-	var grid = document.querySelector('.grid');
-
-	var msnry = new Masonry(grid, {
-		itemSelector: '.grid-item',
-		columnWidth: '.grid-sizer',
+<script>
+	var isotopeBox = document.querySelector('.isotope-wrapper');
+	var isotope = new Isotope(isotopeBox, {
+		itemSelector: '.isotope-item',
+		layoutMode: 'masonry',
 		percentPosition: true,
 		stamp: '.stamp',
 		hiddenStyle: {
@@ -119,28 +73,29 @@
 		}
 	});
 
-	function findParent(el, cls) {
-		while ((el = el.parentElement) && !el.classList.contains(cls));
-		return el;
-	}
-
-	imagesLoaded(grid).on('progress', function(instance, image) {
-		var el = document.querySelector("img[src='"+image.img.getAttribute('src')+"']");
-		var parent = findParent(el, 'grid-item');
-		// un-hide item
-		parent.style.display = '';
-		// layout Masonry after each image loads
-		msnry.layout();
-	});
-</script> -->
-<script>
-	var isotopeBox = document.querySelector('.isotope-wrapper');
-	var isotope = new Isotope(isotopeBox, {
-		itemSelector: '.isotope-item',
-		layoutMode: 'masonry',
-		percentPosition: true,
-		stamp: '.stamp'
-	});
+	// $('.isotope-wrapper')
+	//   .each(function(){
+	//
+	//       var $isotope = $('.isotope-box', this);
+	//       var $filterCheckboxes = $('input[type="radio"]', this);
+	//
+	//       var filter = function(){
+	//         var type = $filterCheckboxes.filter(':checked').data('type') || '*';
+	//         if(type !== '*'){
+	//           type = '[data-type="'+ type +'"]';
+	//         }
+	//         $isotope.isotope({ filter: type });
+	//       };
+	//
+	//       $isotope.isotope({
+	//         itemSelector: '.isotope-item',
+	//         layoutMode: 'masonry'
+	//       });
+	//
+	//       $(this).on('change', filter);
+	//       filter();
+	//   })
+	// ;
 </script>
 <script src="{% static "assets/js/jsOnlyLightbox-0.5.6/js/lightbox.js" %}" type="text/javascript"></script>
 <script>

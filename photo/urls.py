@@ -20,6 +20,5 @@ urlpatterns = [
     url(r'^$', views.index, name='home'),
     url(r'^setup/$', views.setup, name='setup'),
     url(r'^contact/$', views.contact, name='contact'),
-    url(r'^tag/(?P<tag>[a-z0-9-]+)/$', views.tag, name='tag'),
-    url(r'^test/$', views.test, name='test'),
+    url(r'^tag/(?P<tag>[a-z0-9-]+)/$', views.tag, name='tag')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

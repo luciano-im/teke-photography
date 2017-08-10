@@ -115,31 +115,33 @@ nav
 
 .home
 	transition margin-left .5s
-	// .grid-sizer, .grid-item
-	// 	width 25%
-	figure.isotope-item
-		// position relative
-		// width 23.8%
-		// height auto
-		// margin .6%
+	.isotope-item
+		position relative
+		width 23.8%
+		height auto
+		margin .6%
 		&:hover
 			a:after
 				opacity .7
 		a
-			// content ''
-			// display inline-block
-			// height 100.5%
+			content ''
+			display inline-block
+			height 100.5%
 			img
-				// position: absolute
-				// top 0
-				// left 0
-				// width 100%
-				// height 100%
-				// display block
+				position: absolute
+				top 0
+				left 0
+				width 100%
+				height 100%
+				display block
 				transition all .3s ease-in-out
 				// -webkit-backface-visibility hidden
+				&.lazyload
+					background #f7f7f7
+				&.lazyloading
+					background #f7f7f7 url('../img/loader.gif') no-repeat center;
+					min-height: 60px;
 			&:after
-				//background $orangeColor
 				background #000
 				bottom 0
 				content ''
