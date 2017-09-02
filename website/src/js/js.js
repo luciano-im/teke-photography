@@ -6,90 +6,90 @@ document.onreadystatechange = function () {
 
 		// AJAX Functions //////////////////////////////////////////////////////////
 
-		function addItemsAjax() {
-			var request = new XMLHttpRequest();
-			request.open('GET', '/', true);
-			request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+		// function addItemsAjax() {
+		// 	var request = new XMLHttpRequest();
+		// 	request.open('GET', '/', true);
+		// 	request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+		//
+		// 	request.onload = function() {
+		// 		if (request.status >= 200 && request.status < 400) {
+		// 			// Success!
+		// 			var data = JSON.parse(request.response);
+		// 			if (data.length > 0) {
+		// 				var items = getItems(data);
+		// 				var fragment = getFragment(data);
+		// 				loadImages(fragment, items);
+		// 			}
+		// 		} else {
+		// 			// Error!
+		// 			console.log("Error: "+request.status);
+		// 		}
+		// 	};
+		//
+		// 	request.send();
+		// }
 
-			request.onload = function() {
-				if (request.status >= 200 && request.status < 400) {
-					// Success!
-					var data = JSON.parse(request.response);
-					if (data.length > 0) {
-						var items = getItems(data);
-						var fragment = getFragment(data);
-						loadImages(fragment, items);
-					}
-				} else {
-					// Error!
-					console.log("Error: "+request.status);
-				}
-			};
+		// function loadImages(fragment, items) {
+		// 	window.removeEventListener('scroll', ajaxScroll, false);
+		//
+		// 	// append elements to container
+		// 	grid.appendChild(fragment);
+		//
+		// 	var imgLoad = imagesLoaded(items);
+		//
+		// 	imgLoad.on('progress', function(instance, image) {
+		// 		var el = document.querySelector("img[src='"+image.img.getAttribute('src')+"']");
+		// 		var parent = findParent(el, 'grid-item');
+		// 		// un-hide item
+		// 		parent.style.display = '';
+		// 		// masonry does its thing
+		// 		msnry.appended(parent);
+		// 	});
+		//
+		// 	imgLoad.on('always', function(instance) {
+		// 		window.addEventListener('scroll', ajaxScroll, false);
+		// 	});
+		// }
 
-			request.send();
-		}
+		// function getItems(data) {
+		// 	var elems = [];
+		// 	for (i=0; i<data.length; i++) {
+		// 		var item = getItemElement(data[i].thumb, data[i].original);
+		// 		// hide by default
+		// 		item.style.display = 'none';
+		// 		elems.push(item);
+		// 	}
+		// 	return elems;
+		// }
 
-		function loadImages(fragment, items) {
-			window.removeEventListener('scroll', ajaxScroll, false);
+		// function getFragment(data) {
+		// 	var fragment = document.createDocumentFragment();
+		// 	for (i=0; i<data.length; i++) {
+		// 		var item = getItemElement(data[i].thumb, data[i].original);
+		// 		// Add item to lightbox
+		// 		lightbox.thumbnails.push(item.querySelector('a'));
+		// 		// hide by default
+		// 		item.style.display = 'none';
+		// 		fragment.appendChild(item);
+		// 	}
+		// 	return fragment;
+		// }
 
-			// append elements to container
-			grid.appendChild(fragment);
-
-			var imgLoad = imagesLoaded(items);
-
-			imgLoad.on('progress', function(instance, image) {
-				var el = document.querySelector("img[src='"+image.img.getAttribute('src')+"']");
-				var parent = findParent(el, 'grid-item');
-				// un-hide item
-				parent.style.display = '';
-				// masonry does its thing
-				msnry.appended(parent);
-			});
-
-			imgLoad.on('always', function(instance) {
-				window.addEventListener('scroll', ajaxScroll, false);
-			});
-		}
-
-		function getItems(data) {
-			var elems = [];
-			for (i=0; i<data.length; i++) {
-				var item = getItemElement(data[i].thumb, data[i].original);
-				// hide by default
-				item.style.display = 'none';
-				elems.push(item);
-			}
-			return elems;
-		}
-
-		function getFragment(data) {
-			var fragment = document.createDocumentFragment();
-			for (i=0; i<data.length; i++) {
-				var item = getItemElement(data[i].thumb, data[i].original);
-				// Add item to lightbox
-				lightbox.thumbnails.push(item.querySelector('a'));
-				// hide by default
-				item.style.display = 'none';
-				fragment.appendChild(item);
-			}
-			return fragment;
-		}
-
-		function getItemElement(imgURL, aURL) {
-			var img = document.createElement('img');
-			img.src = imgURL;
-			var lnk = document.createElement('a');
-			lnk.href = aURL;
-			// Set lightbox attributes
-			lnk.setAttribute('data-jslghtbx', aURL);
-			lnk.setAttribute('data-jslghtbx-group', 'mygroup1');
-			lnk.appendChild(img);
-			var figure = document.createElement('figure');
-			figure.className = 'grid-item';
-			figure.appendChild(lnk);
-
-			return figure;
-		}
+		// function getItemElement(imgURL, aURL) {
+		// 	var img = document.createElement('img');
+		// 	img.src = imgURL;
+		// 	var lnk = document.createElement('a');
+		// 	lnk.href = aURL;
+		// 	// Set lightbox attributes
+		// 	lnk.setAttribute('data-jslghtbx', aURL);
+		// 	lnk.setAttribute('data-jslghtbx-group', 'mygroup1');
+		// 	lnk.appendChild(img);
+		// 	var figure = document.createElement('figure');
+		// 	figure.className = 'grid-item';
+		// 	figure.appendChild(lnk);
+		//
+		// 	return figure;
+		// }
 
 
 		// Responsive Burger Button & Tags /////////////////////////////////////////
@@ -103,7 +103,8 @@ document.onreadystatechange = function () {
 			if (hasClass(burgerBtn, 'open')) {
 				header.style.marginLeft = '0';
 			} else {
-				header.style.marginLeft = '-250px';
+				// Remove inline style attribute
+				header.removeAttribute("style");
 			}
 		});
 
@@ -128,7 +129,7 @@ document.onreadystatechange = function () {
 				if (hasClass(burgerBtn, 'open')) {
 					toggleClass(burgerBtn, 'open');
 					toggleClass(header.querySelector('.camera'), 'hide');
-					header.style.marginLeft = '-250px';
+					header.removeAttribute("style");
 				}
 			}
 		}

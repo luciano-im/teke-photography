@@ -12,6 +12,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link rel="stylesheet" href="{% static "css/styles.css" %}">
+	<link rel="stylesheet" href="{% static "assets/js/perfect-scrollbar/css/perfect-scrollbar.min.css" %}" />
 
 	<link rel="apple-touch-icon" sizes="57x57" href="{% static "img/favicon/apple-icon-57x57.png" %}">
 	<link rel="apple-touch-icon" sizes="60x60" href="{% static "img/favicon/apple-icon-60x60.png" %}">
@@ -74,5 +75,10 @@
 	{% block content %}{% endblock %}
 	{% block scriptjs %}{% endblock %}
 	<script src="{% static "js/js.js" %}"></script>
+	<script src="{% static "assets/js/perfect-scrollbar/js/perfect-scrollbar.min.js" %}"></script>
+	<script>
+		const container = document.querySelector('header.main');
+		Ps.initialize(container);
+	</script>
 </body>
 </html>
